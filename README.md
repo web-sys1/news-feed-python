@@ -1,8 +1,9 @@
-# drangreader
+# About the News Feed Python
 
 This is a set of scripts for aggregating RSS feeds.  It's based on
 a script originally written by Dr. Drang:
 <http://leancrew.com/all-this/2015/11/simpler-syndication/>
+I'm not owner of code.
 
 ## Installation
 
@@ -16,4 +17,4 @@ Put a list of feed URLs in `feeds.txt`.  One feed per line.  To create the HTML 
 
     python main.py
 
-Assuming nothing goes wrong, the posts will be written to `output.html`.
+Assuming nothing goes wrong, the posts will be written to `.html file`.
