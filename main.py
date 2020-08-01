@@ -91,5 +91,5 @@ for url in SUBSCRIPTIONS:
 with open('template.html', encoding='utf8') as f:
     template = jinja2.Template(f.read())
 
-with open('index.html', 'w', encoding='utf8') as f:
+with open('docs/index.html', 'w', encoding='utf8') as f:
     f.write(template.render(posts=posts, time=datetime.now()))
