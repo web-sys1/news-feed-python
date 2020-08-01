@@ -7,7 +7,7 @@ on:
   push:
     branches: [ webpage ]
   pull_request:
-    branches: [ webpage ]
+    branches: [ master ]
 
 jobs:
   build:
