@@ -16,6 +16,190 @@
   
   <li>
     <div class="article_title">
+      <h3 class="fullpost_title"><a href="http://feedproxy.google.com/~r/TheEndeavour/~3/B8Stw7J3sQg/">Time spent on the moon</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 01 August 2020 at 8:46&thinsp;pm
+      • John D. Cook
+      
+        • by John
+      
+      
+    </p></div>
+    <p><img src="https://www.johndcook.com/lunar_module.jpg" width="100%" alt="Lunar module and lunar rover, photo via NASA" class="size-medium" /></p>
+<p>This post will illustrate two things: the amount of time astronauts have spent on the moon, and how to process dates and times in Python.</p>
+<p>I was curious how long each Apollo mission spent on the lunar surface, so I looked up the timelines for each mission from NASA. Here&#8217;s the timeline for<a href="https://www.history.nasa.gov/SP-4029/Apollo_11i_Timeline.htm"> Apollo 11</a>, and you can find the timelines for the other missions by making the obvious change to the URL.</p>
+<p>Here are the data on when each Apollo lunar module touched down and when it ascended.</p>
+<pre>
+    data = [
+        ("Apollo 11", "1969-07-20 20:17:39", "1969-07-21 17:54:00"),
+        ("Apollo 12", "1969-11-19 06:54:36", "1969-11-20 14:25:47"),
+        ("Apollo 14", "1971-02-05 09:18:13", "1971-02-06 18:48:42"),
+        ("Apollo 15", "1971-07-30 22:16:31", "1971-08-02 17:11:23"),
+        ("Apollo 16", "1972-04-21 02:23:35", "1972-04-24 01:25:47"),
+        ("Apollo 17", "1972-12-11 19:54:58", "1972-12-14 22:54:37"),
+    ]
+</pre>
+<p>Here&#8217;s a first pass at a program to parse the dates and times above and report their differences.</p>
+<pre>
+    from datetime import datetime, timedelta
+
+    def str_to_datetime(string):
+        return datetime.strptime(string, "%Y-%m-%d %H:%M:%S")
+
+    def diff(str1, str2):
+        return str_to_datetime(str1) - str_to_datetime(str2)
+
+    for (mission, touchdown, liftoff) in data:
+        print(f"{mission} {diff(liftoff, touchdown)}")
+</pre>
+<p>This works, but the formatting is unsatisfying.</p>
+<pre>
+    Apollo 11 21:36:21
+    Apollo 12 1 day, 7:31:11
+    Apollo 14 1 day, 9:30:29
+    Apollo 15 2 days, 18:54:52
+    Apollo 16 2 days, 23:02:12
+    Apollo 17 3 days, 2:59:39
+</pre>
+<p>It would be easier to scan the output if it were all in hours. So we rewrite our <code>diff</code> function as follows.</p>
+<pre>
+    def diff(str1, str2):
+        delta = str_to_datetime(str1) - str_to_datetime(str2)
+        hours = delta.total_seconds() / 3600
+        return round(hours, 2)
+</pre>
+<p>Now the output is easier to read.</p>
+<pre>
+    Apollo 11 21.61
+    Apollo 12 31.52
+    Apollo 14 33.51
+    Apollo 15 66.91
+    Apollo 16 71.04
+    Apollo 17 74.99
+</pre>
+<p>These durations fall into three clusters, corresponding to the Apollo mission types G, H, and J.  Apollo 11 was the only G-type mission. Apollo 12, 13, and 14 were H-type, intended to demonstrate a precise landing and explore the lunar surface. (Apollo 13 had to loop around the moon without landing.) The J-type missions were more extensive scientific missions. These missions included a lunar rover (&#8220;moon buggy&#8221;) to let the astronauts travel further from the landing site. There were no I-type missions; the objectives of the original I-type missions were merged into the J-type missions.</p>
+<p>One note about the Python code: subtracting dates works unlike you&#8217;d expect, depending on your expectations. The difference between an earlier date and a later date is positive. You might expect that when speaking of dates informally. But if you think of the difference in dates as subtracting the number of seconds from some epoch to a that date, you&#8217;d expect the opposite sign. </p>
+<p>Incidentally, UNIX systems store times as seconds since 1970-01-01 00:00:00. That means the first two lunar landings were at negative times and the last four were at positive times. More on UNIX time <a href="https://www.johndcook.com/blog/2020/02/05/leap-seconds/">here</a>.</p>
+<h2>Related posts</h2>
+<ul>
+<li class="link"><a href="https://www.johndcook.com/blog/2020/02/08/arenstorf-orbit/">The orbit that put men on the moon</a></li>
+<li class="link"><a href="https://www.johndcook.com/blog/applied-kalman-filtering/">Kalman filters</a></li>
+<li class="link"><a href="https://www.johndcook.com/blog/2013/06/10/the-weight-of-code/">The weight of code</a></li>
+<li class="link"><a href="https://www.johndcook.com/blog/2008/07/02/team-moon/">Team Moon</a></li>
+<li class="link"><a href="https://www.johndcook.com/blog/2008/04/22/duct-tape-on-the-moon/">Duct tape on the moon</a></li>
+</ul>
+<img src="http://feeds.feedburner.com/~r/TheEndeavour/~4/B8Stw7J3sQg" height="1" width="1" alt=""/>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
+      <h3 class="fullpost_title"><a href="https://www.macsparky.com/blog/2020/8/the-tiktok-war">The TikTok War</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 01 August 2020 at 8:17&thinsp;pm
+      • MacSparky
+      
+        • by David Sparks
+      
+      
+    </p></div>
+    <p class="">In light <a href="https://www.cnn.com/2020/07/31/tech/tiktok-trump-bytedance-sale/index.html">of current events</a>, I’ve been paying more attention to TikTok lately. By “paying attention”, I mean I’ve been watching the nightly batch of puppy TikToks that my daughters have lovingly curated for me.</p><p class="">So from this perspective, I didn’t understand what the big deal was with TikTok and why folks are talking about banning it in the United States. It turns out the issue is much more complicated than puppy videos. If you’d like to get up to speed, Ben Thompson&nbsp;<a href="https://stratechery.com/2020/the-tiktok-war/"><span>summarizes and adds some insight.</span></a></p>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
+      <h3 class="fullpost_title"><a href="https://www.macsparky.com/blog/2020/8/automators-55-drafts-with-agile-tortoise">Automators 55: Drafts with Agile Tortoise</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 01 August 2020 at 8:00&thinsp;pm
+      • MacSparky
+      
+        • by David Sparks
+      
+      
+    </p></div>
+    <figure class="
+              sqs-block-image-figure
+              intrinsic
+            "
+        >
+          
+        
+        
+
+        
+          <a class="
+                sqs-block-image-link
+                
+          
+        
+              " href="https://www.relay.fm/automators" target="_blank"
+          >
+            
+          
+            <img class="thumb-image" data-image="https://images.squarespace-cdn.com/content/v1/5008676d84aeae82b8acdd8c/1596310269283-Y9O64A7KTKJQVWQ2K4ZG/ke17ZwdGBToddI8pDm48kPx25wW2-RVvoRgxIT6HShBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwGbtSA7WutlFA3XjmDXUDFwmxX_uEhqHOBUlPnU0mYmf1Qvd6diXKmxQIX-f1CXeo/Automators+Artwork.jpg" data-image-dimensions="700x700" data-image-focal-point="0.5,0.5" alt="Automators Artwork.jpg" data-load="false" data-image-id="5f25c2fcb71b7012a54e5c3a" data-type="image" src="https://images.squarespace-cdn.com/content/v1/5008676d84aeae82b8acdd8c/1596310269283-Y9O64A7KTKJQVWQ2K4ZG/ke17ZwdGBToddI8pDm48kPx25wW2-RVvoRgxIT6HShBZw-zPPgdn4jUwVcJE1ZvWQUxwkmyExglNqGp0IvTJZUJFbgE-7XRK3dMEBRBhUpwGbtSA7WutlFA3XjmDXUDFwmxX_uEhqHOBUlPnU0mYmf1Qvd6diXKmxQIX-f1CXeo/Automators+Artwork.jpg?format=1000w" />
+          
+        
+          </a>
+        
+
+        
+      
+        </figure>
+      
+
+    
+  
+
+
+  
+
+
+<p class="">In <a href="https://www.relay.fm/automators/55" target="_blank">this episode of <em>Automators</em></a>, Rosemary and I are joined by Greg Pierce of Agile Tortoise to talk about Drafts and how they're using it and text-based automations to improve their lives with everything from dinner alerts to complex project templates.</p><p class=""><strong>This episode of&nbsp;</strong><a href="https://www.relay.fm/automators"><strong>Automators</strong></a><strong>&nbsp;is sponsored by:</strong></p><ul data-rte-list="default"><li><p class=""><a href="http://mintmobile.com/automators">Mint Mobile</a>: Cut your wireless bill to $15 a month.</p></li><li><p class=""><a href="https://www.devontechnologies.com/automators">DEVONthink</a>: Get organized—unleash your creativity. Use this link for 10% off.</p></li></ul>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
+      <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/jared-kushner-wanted-to-get-shit-done-he-didnt/">Jared Kushner Wanted to “Get Shit Done.” He Didn’t.</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 01 August 2020 at 7:25&thinsp;pm
+      • Kevin Drum – Mother Jones
+      
+        • by Kevin Drum
+      
+      
+    </p></div>
+    <p>Katherine Eban has a longish piece in <em>Vanity Fair</em> about how the White House—and Jared Kushner in particular—handled the early days of the COVID-19 pandemic. For example, there&#8217;s a passage examining why Kushner and Trump <a href="https://www.vanityfair.com/news/2020/07/how-jared-kushners-secret-testing-plan-went-poof-into-thin-air">showed little interest in a national plan:</a></p>
+<blockquote>
+<p>Most troubling of all, perhaps, was a sentiment the expert said a member of Kushner’s team expressed: <strong>that because the virus had hit blue states hardest, a national plan was unnecessary and would not make sense politically.</strong> “The political folks believed that because it was going to be relegated to Democratic states, that they could blame those governors, and that would be an effective political strategy,” said the expert.</p>
+<p>That logic may have swayed Kushner. “It was very clear that Jared was ultimately the decision maker as to what [plan] was going to come out,” the expert said.</p>
+</blockquote>
+<p>This isn&#8217;t really a scoop, though, since it was widely known among reporters at the time. Kushner, who was a sort of free-roving coronavirus troubleshooter in the early days, apparently started out trying to put together a national plan with his team of college pals and young banker types, but it never saw the light of day. By the end of April, partisan considerations had overwhelmed everything. Kushner and Trump decided that instead of putting in place a plan that would effectively crush the virus, they wanted a plan that would most effectively boost Trump&#8217;s reelection plans.</p>
+<p><strong>OBLIGATORY NOTE:</strong> The White House, of course, denies all of this. Given their track record for lying about everything, however, there&#8217;s no need for you to take this seriously.</p>
+<p>In any case, with Kushner in charge it&#8217;s not clear just how good a national plan would have been anyway. Kushner&#8217;s mysterious planeloads of pandemic supplies have been documented before, but Eban provides a case study of one particular Kushner brainstorm that illustrates how his &#8220;just get shit done&#8221; attitude played out in real life. The idea was to order millions of Chinese-made COVID-19 test kits from an outfit in the Middle East:</p>
+<blockquote>
+<p><strong>Normally, federal government purchases come with detailed contracts, replete with acronyms and identifying codes.</strong> They require sign-off from an authorized contract officer and are typically made public in a U.S. government procurement database, under a system intended as a hedge against waste, fraud, and abuse.</p>
+<p><strong>This purchase did not appear in any government database. Nor was there any contract officer involved.</strong> Instead, it was documented in an invoice obtained by <em>Vanity Fair</em>, from a company, Cogna Technology Solutions (its own name misspelled as “Tecnology” on the bill), which noted a total order of 3.5 million tests for an amount owed of $52 million. The “client name” simply noted “WH.”</p>
+</blockquote>
+<p>I might be off base here, but the thing that really drew my attention was the invoice itself:</p>
+<p><figure id="attachment_856616"  class="inline-image alignnone" style="max-width: 500px;"><img class="size-full wp-image-856616" src="https://www.motherjones.com/wp-content/uploads/2020/08/blog_cogna_invoice.jpg" alt="" width="500" height="1695"></figure>
+<p>Does this even look like a real invoice? It&#8217;s not aligned right; it has misspelled words; there&#8217;s no customer information and no order reference; and just based on having seen lots of invoices in my time, it doesn&#8217;t look real. It looks like something that was whomped up in PowerPoint.</p>
+<p>And that&#8217;s not all. The test kits were delivered in late March, but they were no good. &#8220;An FDA spokesperson told <em>Vanity Fair</em> the tests may have been rendered ineffective because of how they were stored when they were shipped from the Middle East. &#8216;The reagents should be kept cold,&#8217; the spokesperson said.&#8221;</p>
+<p>&#8220;The reagents should be kept cold.&#8221; No kidding. A freshman chemistry major could have guessed that. But this kind of planning is what passes for brilliant thinking among the Kushnerites and the Trump administration in general. Ideology aside, it turns out that it really does matter if the president of the United States is competent.</p>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
       <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/coronavirus-growth-in-western-countries-july-31-update/">Coronavirus Growth in Western Countries: July 31 Update</a></h3>
     </div>
     <div class="article_meta"><p>
@@ -1572,26 +1756,6 @@ In response to the idea of using lithium grease on door hinges, reader <strong>
   
   <li>
     <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/07/chart-of-the-day-gdp-plummets-in-q2/">Chart of the Day: GDP Plummets in Q2</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 30 July 2020 at 3:12&thinsp;pm
-      • Kevin Drum – Mother Jones
-      
-        • by Kevin Drum
-      
-      
-    </p></div>
-    <p><a href="https://www.bea.gov/news/2020/gross-domestic-product-2nd-quarter-2020-advance-estimate-and-annual-update">GDP plummeted 9.5 percent in the second quarter of the year,</a> an annualized rate of 32.9 percent. Just in case that&#8217;s not dramatic enough for you, here&#8217;s a view of GDP that you don&#8217;t normally see:</p>
-<p><figure id="attachment_856040"  class="inline-image alignnone" style="max-width: 1269px;"><img class="size-full wp-image-856040" src="https://www.motherjones.com/wp-content/uploads/2020/07/blog_gdp_2q_2020.gif" alt="" width="1269" height="615"></figure>
-<p>The reason you seldom see this view of raw GDP is that even big drops barely show up. The 1980 recession is hardly visible and even the 2008 Great Recession looks pretty puny. It&#8217;s just a nice, steady march of trendline growth until 2020. The coronavirus recession is the first in 90 years to be so big that it&#8217;s visible from outer space, so to speak.</p>
-<p>I used to take solace from the fact that this drop was deliberately manufactured, which meant it could be deliberately remedied when the coronavirus was under control. Little did I know that our president had no real interest in controlling the virus and Republicans had no real interest in keeping the country afloat in the meantime. There is going to be tremendous suffering over the next year.</p>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
       <h3 class="fullpost_title"><a href="https://www.macstories.net/reviews/fiery-feeds-adds-full-text-search-saved-searches-ipad-pointer-support-and-more/">Fiery Feeds Adds Full-Text Search, Saved Searches, iPad Pointer Support, and More</a></h3>
     </div>
     <div class="article_meta"><p>
@@ -1687,7 +1851,7 @@ In response to the idea of using lithium grease on door hinges, reader <strong>
         Based on a script by <a href="http://leancrew.com/all-this/2015/11/simpler-syndication/">Dr Drang</a>.
     </p>
     <p>
-        Last updated on 1 August 202 at 7:13&thinsp;pm.
+        Last updated on 2 August 202 at 12:07&thinsp;am.
     </p>
   </footer>
 </body>
