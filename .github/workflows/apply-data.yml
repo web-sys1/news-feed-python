@@ -1,7 +1,7 @@
 # This workflow will install Python dependencies, run tests and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
 
-name: Python application
+name: Apply for News Feed
 
 on:
   schedule:
@@ -36,7 +36,7 @@ jobs:
       run: |
         git config --local user.email "action@github.com"
         git config --local user.name "GitHub Action"
-        git commit --allow-empty -m "Upload feed" -a
+        git commit --allow-empty -m "Update feed" -a
         git pull
     - name: Push changes on built version
       uses: ad-m/github-push-action@master
