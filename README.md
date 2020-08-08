@@ -17,4 +17,10 @@ Put a list of feed URLs in `feeds.txt`.  One feed per line.  To create the HTML 
 
     python main.py
 
-Assuming nothing goes wrong, the posts will be written to `.html file`.
+Assuming nothing goes wrong, the posts will be written to `.html` file.
+
+## What's next?
+Try with Binder:
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/web-sys1/news-feed-python/master)
+
+This notebook can also be run in the browser through binder.
