@@ -16,6 +16,63 @@
   
   <li>
     <div class="article_title">
+      <h3 class="fullpost_title"><a href="http://feedproxy.google.com/~r/TheEndeavour/~3/fWrs_WQx0y0/">Concentric circle images go wild</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 08 August 2020 at 10:36&thinsp;pm
+      • John D. Cook
+      
+        • by John
+      
+      
+    </p></div>
+    <p><a href="https://www.hakmem.org/">HAKMEM</a> Item 123 gives two plots, both images of concentric circles under functions given by power series with rapidly thinning terms [1]. The first is the function</p>
+<p><img src="https://www.johndcook.com/hakmem_eqn1.svg" width="109" height="48" alt="f(z) = \sum_{n=1}^\infty \frac{z^{n!}}{n!}" class="aligncenter size-medium" style="background-color:white" /></p>
+<p>and the second is</p>
+<p><img src="https://www.johndcook.com/hakmem_eqn2.svg" width="110" height="48" alt=" g(z) = \sum_{n=1}^\infty \frac{z^{2^n}}{2^n}" class="aligncenter size-medium" style="background-color:white" /></p>
+<p>The lower limits of summation are not given in the original. I assumed at first the sums began at <em>n</em> = 0, but my plots didn&#8217;t match the original until I set the lower index to begin at <em>n</em> = 1.</p>
+<p>Here are the plots. First, the image of the circles of radius 1/2, 3/4, 7/8, and 1 under <em>f</em>.</p>
+<p><img src="https://www.johndcook.com/hakmem_plot1.png" width="640" height="480" class="aligncenter size-medium" /></p>
+<p>Next, the images of the circles of radius 1/8, 2/8, &hellip;, 8/8 under <em>g</em>.</p>
+<p><img src="https://www.johndcook.com/hakmem_plot2.png" width="640" height="480" class="aligncenter size-medium" /></p>
+<p>Note that the images of concentric circles are smooth, concentric, not self-intersecting for small radii. As the radii get larger, the images of the circles start to intersect. And when the radius is 1, the images are rough and reminiscent of Mandelbrot sets.</p>
+<p>Here&#8217;s the Python code that produced the plots.</p>
+<pre>
+    from math import factorial
+    from numpy import linspace, exp, pi
+    import matplotlib.pyplot as plt
+    
+    def f(thin, z):
+        return sum(z**thin(n)/thin(n)
+                   for n in range(1, 12))
+    
+    theta = linspace(0, 2*pi, 1000)
+    
+    for r in [0.5, 0.75, 0.875, 1]:
+        z = f(factorial, r*exp(1j*theta))
+        plt.plot(z.real, z.imag)
+    plt.axes().set_aspect(1)
+    plt.title("f(z)")
+    plt.show()
+    plt.close()
+    
+    for n in range(8):
+        r = (n+1)/8
+        theta = linspace(0, 2*pi, 1000)
+        z = f(lambda n: 2**n, r*exp(1j*theta))
+        plt.plot(z.real, z.imag)
+    plt.title("g(z)")
+    plt.axes().set_aspect(1)
+    plt.show()
+</pre>
+<p>[1] See the footnote on lacunary series <a href="https://www.johndcook.com/blog/2020/07/11/dirichlet-principle-counterexample/">here</a>.</p>
+<img src="http://feeds.feedburner.com/~r/TheEndeavour/~4/fWrs_WQx0y0" height="1" width="1" alt=""/>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
       <h3 class="fullpost_title"><a href="http://feedproxy.google.com/~r/JamesFallows/~3/RT-OcfMrqcA/">Another Lesson From the Roman Empire</a></h3>
     </div>
     <div class="article_meta"><p>
@@ -2152,7 +2209,7 @@ pressure.</p>
         By <a href="http://leancrew.com/all-this/2015/11/simpler-syndication/">Dr Drang</a>.
     </p>
     <p>
-        Last updated on 08 August 2020 at 6:11&thinsp;pm.
+        Last updated on 09 August 2020 at 12:31&thinsp;am.
         Made with Python app & Jinja (based on script by configuration of the repository)
     </p>
   </footer>
