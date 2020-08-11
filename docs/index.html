@@ -1038,6 +1038,21 @@ impression, as shown in the following side-by-side comparison.</p>
   
   <li>
     <div class="article_title">
+      <h3 class="fullpost_title"><a href="https://xkcd.com/2344/">26-Second Pulse</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 10 August 2020 at 12:00&thinsp;am
+      • xkcd.com
+      
+      
+    </p></div>
+    <img src="https://imgs.xkcd.com/comics/26_second_pulse.png" title="There are some papers arguing that there's a volcanic component, but I personally think they're just feeling guilty and trying to cover the trail." alt="There are some papers arguing that there's a volcanic component, but I personally think they're just feeling guilty and trying to cover the trail." />
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
       <h3 class="fullpost_title"><a href="https://512pixels.net/2020/08/mpu-548/">Mac Power Users #548: Jumping Into Markdown</a></h3>
     </div>
     <div class="article_meta"><p>
@@ -1222,222 +1237,6 @@ In my workshop and studio, I label boxes, shelves, drawers, cases, bins, and par
 
 <p class="">Wow, are you feeling nostalgic for your old Mac? The&nbsp;<a href="https://github.com/felixrieseberg/macintosh.js" target="_blank"><span>macintosh.js project just released a JavaScript emulator</span></a>&nbsp;that runs Mac OS 8 emulated on a 1991 Macintosh Quadra. It works! I had several minutes of nostalgia—followed by several minutes of realizing things are a lot easier now.</p>
     
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="http://feedproxy.google.com/~r/TheEndeavour/~3/fWrs_WQx0y0/">Concentric circle images go wild</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 08 August 2020 at 10:36&thinsp;pm
-      • John D. Cook
-      
-        • by John
-      
-      
-    </p></div>
-    <p><a href="https://www.hakmem.org/">HAKMEM</a> Item 123 gives two plots, both images of concentric circles under functions given by power series with rapidly thinning terms [1]. The first is the function</p>
-<p><img class="aligncenter size-medium" style="background-color: white;" src="https://www.johndcook.com/hakmem_eqn1.svg" alt="f(z) = \sum_{n=1}^\infty \frac{z^{n!}}{n!}" width="109" height="48" /></p>
-<p>and the second is</p>
-<p><img class="aligncenter size-medium" style="background-color: white;" src="https://www.johndcook.com/hakmem_eqn2.svg" alt=" g(z) = \sum_{n=1}^\infty \frac{z^{2^n}}{2^n}" width="110" height="48" /></p>
-<p>The lower limits of summation are not given in the original. I assumed at first the sums began at <em>n</em> = 0, but my plots didn&#8217;t match the original until I set the lower index to begin at <em>n</em> = 1.</p>
-<p>Here are the plots. First, the image of the circles of radius 1/2, 3/4, 7/8, and 1 under <em>f</em>.</p>
-<p><img class="aligncenter size-medium" src="https://www.johndcook.com/hakmem_plot1.png" width="640" height="480" /></p>
-<p>Next, the images of the circles of radius 1/8, 2/8, …, 8/8 under <em>g</em>.</p>
-<p><img class="aligncenter size-medium" src="https://www.johndcook.com/hakmem_plot2.png" width="640" height="480" /></p>
-<p>Note that the images of concentric circles are smooth, concentric, not self-intersecting for small radii. As the radii get larger, the images of the circles start to intersect. And when the radius is 1, the images are rough and reminiscent of Mandelbrot sets.</p>
-<p>Here&#8217;s the Python code that produced the plots.</p>
-<pre>    from math import factorial
-    from numpy import linspace, exp, pi
-    import matplotlib.pyplot as plt
-    
-    def f(thin, z):
-        return sum(z**thin(n)/thin(n)
-                   for n in range(1, 12))
-    
-    theta = linspace(0, 2*pi, 1000)
-    
-    for r in [0.5, 0.75, 0.875, 1]:
-        z = f(factorial, r*exp(1j*theta))
-        plt.plot(z.real, z.imag)
-    plt.axes().set_aspect(1)
-    plt.title("f(z)")
-    plt.show()
-    plt.close()
-    
-    for n in range(8):
-        r = (n+1)/8
-        z = f(lambda n: 2**n, r*exp(1j*theta))
-        plt.plot(z.real, z.imag)
-    plt.title("g(z)")
-    plt.axes().set_aspect(1)
-    plt.show()
-</pre>
-<p><strong>Update 1</strong>: Out of curiosity, I unrolled the plots to look at the real and imaginary components separately. Here&#8217;s what I got.</p>
-<p><img class="aligncenter size-medium" src="https://www.johndcook.com/hakmem_plot3.png" width="640" height="480" /></p>
-<p><img class="aligncenter size-medium" src="https://www.johndcook.com/hakmem_plot4.png" width="640" height="480" /></p>
-<p><strong>Update 2</strong>: Here&#8217;s a plot of the arclength of the image of a circle of radius <em>r</em> under the map <em>g</em>(<em>z</em>).</p>
-<p><img class="aligncenter size-medium" src="https://www.johndcook.com/hakmem_plot5.png" width="640" height="480" /></p>
-<p>The length of the image curve is nearly proportional to the circumference of the input until <em>r</em> around 0.8, then the length increases quickly. Apparently the arc length goes to infinity as <em>r</em> goes to 1, though I haven&#8217;t proved this.</p>
-<p>[1] See the footnote on lacunary series <a href="https://www.johndcook.com/blog/2020/07/11/dirichlet-principle-counterexample/">here</a>.</p>
-<img src="http://feeds.feedburner.com/~r/TheEndeavour/~4/fWrs_WQx0y0" height="1" width="1" alt=""/>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="http://feedproxy.google.com/~r/JamesFallows/~3/RT-OcfMrqcA/">Another Lesson From the Roman Empire</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 08 August 2020 at 3:01&thinsp;pm
-      • James Fallows | The Atlantic
-      
-        • by James Fallows
-      
-      
-    </p></div>
-    <p>A year ago, I <a href="https://www.theatlantic.com/magazine/archive/2019/10/in-the-fall-of-rome-good-news-for-america/596638/?utm_source=feed">published a piece</a> in the print magazine about that long-standing object of American fascination, the Roman Empire. Usually, and usefully, Americans have over the centuries looked to Rome for guidance on how their nation could avoid the predictable slide from republic to empire to conquest and dissolution. My favorite in this genre is the wonderful 2007 book <a href="https://www.barnesandnoble.com/w/are-we-rome-cullen-murphy/1111827041"><em>Are We Rome?</em></a>, by my friend (and <em>Atlantic</em> colleague) Cullen Murphy.</p><p>But for last year’s piece I discussed some other books, arguing that what happened to Rome <em>after</em> the fall of the Western empire is what Americans should be studying. Especially in this era when central government—leadership on the imperial scale, you might say—was faltering, and when our counterparts to the Roman provinces (that is, our cities and states and regions) were by comparison so much more practical-minded and functional.</p><p>My friend <a href="http://www.ericschnurer.com/">Eric Schnurer</a>, who has worked in and written extensively (including <a href="https://www.theatlantic.com/author/eric-schnurer/?utm_source=feed">for <em>The Atlantic</em></a>) about governance at all levels, <a href="https://www.theatlantic.com/notes/2019/09/who-would-rather-be-living-in-the-13th-century-than-today/597592/?utm_source=feed">wrote a response</a> that highlighted some additional areas of useful comparison between the America of our time and the Rome of yesteryear. Now he is back with an extension of his argument. He calls this dispatch “From Sulla to Sullen: What the Fall of the Roman Republic Tells Us About Where Trump Is Taking Us.” I think it is instructive and worth reading, and with his permission I quote it below.</p><p>Schnurer began by directing attention away from the end of the empire, and instead to:</p><blockquote>
-<p>… the approaching decline of the Roman Republic, a half-millennium earlier.  As I <a href="https://www.theatlantic.com/notes/2019/09/who-would-rather-be-living-in-the-13th-century-than-today/597592/?utm_source=feed">wrote last year</a>, “the increasing economic inequality, the increasing political polarization, the total eclipse of ‘the greater good’ by what we’d call ‘special interests,’ the turn toward political violence” all  looked “a lot like the present moment to me.” I was thinking of the period dominated by the attempted reforms of the Gracchi brothers—a tag-team somewhat analogous to Bernie Sanders and Elizabeth Warren —roughly a century before the Republic’s ultimate fall into dictatorship.</p>
-
-<p>I hardly expected then that within about <em>half a year</em>, Donald Trump would manage to fast-forward the country through <em>half a</em> <em>century</em> of Roman history, to the doorstep of the Civil Wars that destroyed what little was left of Republican Rome.</p>
-
-<p>Of course, no historical analogy is exact. The collapse of the Republic was brought on by a combination of structural flaws in its politics and governance, and the self-serving ambitions of ruthless individuals that exploited them. While the causes were many, inter-related, and complex, at their root was a system that defied any notion of the common good and was devoid of political means to resolve rather than exacerbate division.</p>
-
-<p>The Republic was the creation of a tight-knit oligarchy that had overthrown the preceding monarchy and, as a result, held a deep-seated determination never again to allow any one individual to accumulate so much power as to overawe all others.  </p>
-
-<p>The solution was not so much a separation of powers, as we conceive of it—officials simultaneously played executive, legislative and even judicial roles—as a vast multiplicity of individuals who could hold their posts only once, and for only a year. But this was no “citizen’s republic”:  A small coterie of privileged families held almost all these offices and voting was severely limited.</p>
-
-<p>Moreover, the term <em>republic</em>—from the Latin for “a thing of the public”—was meant to distinguish it from a monarchy, which was essentially the personal property of the ruler in which other people simply happened to live. But the Roman Republic was more like what we might think of as a “publicly held corporation” and, essentially, treated as private property. Officials used public office to profit personally and directly (and openly).</p>
-
-<p>Of course, it takes money to make money, so only the very wealthy could afford to pursue these rewards because, along the way, they were expected personally to pay for the lavish spectacles, such as the famous gladiatorial games, that sated the public, as well as major public works and public building projects. The Roman state, in short, while ostensibly “public,” had long since been thoroughly privatized.</p>
-</blockquote><blockquote>
-<p>This state was essentially an increasingly imperial business enterprise, in the guise of a government. The expanding conquests, which were basically run as profit centers, undercut the working populations in the city through a growing influx of slave labor, and drove rural residents off their land through collapsing agricultural prices due to burgeoning grain imports—the automation and offshoring of their day.</p>
-
-<p>These developments nonetheless personally benefited the wealthy Senatorial and governing elite that wielded government power increasingly for the sole private benefit of its members. This led to spiraling social tensions that, when they flared into violence, were resolved through grudging concessions rather than fundamental—and democratizing—changes.   </p>
-
-<p>The “radical” Warren-esque reforms of the Gracchis, who themselves were highly patrician, arguably aimed to save their own class from themselves as much as saving the Republic, by creating economic safety valves not unlike the patrician Franklin Roosevelt’s New Deal at the depths of the Great Depression. The elites were too selfish, or shortsighted, or both, to see the wisdom—resulting in a violent uprising of the dispossessed known as “the Social War.” Conceptions of a greater good shared broadly amongst a frontier people who had thrown off their king, and came together especially in times of external threat, had long since melted away before the pursuit of personal wealth and power. Politics could no longer bridge the divides, because the threat did not come from without: The enemy was the other within.</p>
-
-<hr class="c-section-divider"><p>In this <em>res public</em> largely eviscerated of any sense of the “public,” politics and government increasingly degenerated further into the personal.  Wealthy politicians vied for, and alternated in power, with the support of their own personal parties, armed factions, and the communications media of the day (Julius Caesar, with his <em>Commentaries</em> on his subjugation of Gaul, was a master of this). By a half-century after the Gracchis’ reforms were beaten back, extremely different visions of governing structure, social issues, and economics eventually confronted each other for power in the form of essentially personalized states built largely around either Gaius Marius or Lucius Cornelius Sulla.</p>
-
-<p>And that might be where we find ourselves today. While the political parallels are far from perfect, Marius, hardly a blameless figure, personified the cause of the <em>populares</em>—what we might think of as more-or-less progressive, advocating for an expanded democracy and economic redistribution. Sulla, a patrician who indulged a fairly libertine, sometimes vulgar, lifestyle even throughout his several marriages, was nonetheless the champion of the economic, social and political conservatives, prevailed and eventually became dictator.</p>
-
-<p>While Roman politics had long been a nasty affair, Sulla was the first to institutionalize “proscription”—the practice of declaring your opponents “enemies of the state” and thereby licensing open-hunting season on them. He also became the first ever to violate perhaps the most deeply held norm of the Republic’s unwritten constitution—that no general was ever to lead armed forces across the sacred boundary, the <em>pomerium</em>, of Rome itself—which set the precedent for Julius Caesar’s later, and more famous, crossing of the Rubicon that all but marked the end of the Republic, and Rome’s imperfect democracy, for good.</p>
-
-<p>Now, within the last month, President Trump has sent armed forces into American cities—but not the regular armed forces, as he has mooted in the past. He didn’t call up the National Guard, as presidents normally do when responding to emergencies or civil unrest: With military leaders and some troops themselves publicly expressing discomfort after their use against peaceful protests in Washington, DC, Trump needed to find forces more personally loyal to himself—and he did so in the Customs and Border Patrol—outside any existing branch of the military, responding directly to his agenda, arguably beyond his constitutional authority, and targeting dissent ...</p>
-
-<p>But, as is often the case with Trump, creation of this new praetorian guard can alternatively be understood as essentially a business, rather than an ideological, development—simply a further, if more disturbing, extension of his privatization and personalization of the federal government. The fact that this new model army displays no government agency’s insignia on its personnel or vehicles—relying instead on widely available camouflage rather than government uniforms—means that private militias and vigilantes can easily join forces with it, or even take actions on their own, indistinguishable from these new-fangled government irregulars. As I <a href="https://www.usnews.com/opinion/thomas-jefferson-street/articles/2017-02-07/donald-trump-and-steve-bannon-will-leave-america-hollow">predicted when Trump first took office</a>, the distinction between public and private sectors is melting away before our very eyes even as to the deployment of legitimate force that, ever since the great sociologist Max Weber, has been seen as the defining element of the state.</p>
-
-<p>Coming as it does at the same time that Trump has declared, even more unmistakably than in the past, that <a href="https://www.cnn.com/2020/07/20/politics/2020-election-transition-trump/index.html">he is not inclined to honor the election results if he loses</a> and then <a href="https://www.theatlantic.com/ideas/archive/2020/07/trump-postpone-election/614755/?utm_source=feed">floated delaying them</a>, the creation of what is essentially his own personal army raises the possibility that Trump eventually may create, well, his own personal government.</p>
-
-<p>Many have expressed concerns for some time that Trump would attempt to remain in office if he were defeated, and might rally armed militias to his cause (I’ve raised this concern myself since the night Trump was elected) … But even if he does leave, the likely Trump post-presidency that fits best with his personality and history—not to mention that of the Romans—may be even more troubling and dangerous.</p>
-
-<p>Trump, if he were to lose, might well leave the White House—he never liked the building to begin with, and doesn’t like the actual work of the presidency—but never concede that he lost. He might not be the real President anymore … but he could play one on TV. If he continued to insist that he were the actual, legitimate President of the United States, there can be little doubt that tens of millions of Americans would believe him. And unlike your average crank, Trump has the resources and ability to turn this into a 24/7 TV reality program through <a href="https://www.wsj.com/articles/trump-allies-explore-buyout-of-conservative-news-channel-one-america-news-network-11578696767">his own television network</a>, even further to the right and more reliably sycophantic than Fox—which he reportedly <a href="https://www.usatoday.com/story/money/2016/10/17/report-trump-may-start-tv-network/92280290/">was considering launching had he not, unexpectedly, won the 2016 election</a>.</p>
-
-<p>Imagine an alternative President, with at least as much media reach as the one actually in the White House, with an unshakably devoted following of perhaps as much as one-third of the country, and perhaps even his own private armed forces—Sulla with a TV station funded by his fellow reactionary patricians, with his own camo-clad stormtroopers picking up and disappearing <em>populare</em> protestors in unmarked vans—and the present looks even more like the late Republic than when I wrote about this less than a year ago. If this occurs, the country would descend into dueling polities, dueling realities, and dueling war zones.</p>
-
-<hr class="c-section-divider"><p>Of course, there are always alternatives: As dysfunctional as the Republic had become, Rome didn’t necessarily need a Caesar. But it <em>did</em> need a modernization of its pre-imperial governance technology—a standing bureaucracy and a streamlined executive to carry out the legislative will would have improved on the existing multi-headed oligarchy at least as well as the succession of terrible emperors did. And a peaceful mechanism for resolving the increasingly disparate interests of Rome’s increasingly disparate and unwieldy empire—broadened and meaningful democracy, for instance, along with progressive economic policies and perhaps a Plebeian Lives Matter movement—might have averted a half-millennium of dictatorship dominated not by orderly succession but factional assassinations and coups until even the Empire eventually conceded it couldn’t manage the job and simply partitioned itself.</p>
-
-<p>We face similar choices today. History isn’t destiny. But it <em>is</em> a warning.   </p>
-</blockquote><p>Thanks to Eric Schnurer, whom you can <a href="http://www.ericschnurer.com/">reach directly on his website, here</a>.</p><div class="feedflare">
-<a href="http://feeds.feedburner.com/~ff/JamesFallows?a=RT-OcfMrqcA:wwOybzqCtyU:yIl2AUoC8zA"><img src="http://feeds.feedburner.com/~ff/JamesFallows?d=yIl2AUoC8zA" border="0"></img></a>
-</div><img src="http://feeds.feedburner.com/~r/JamesFallows/~4/RT-OcfMrqcA" height="1" width="1" alt=""/>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/coronavirus-growth-in-western-countries-august-7-update/">Coronavirus Growth in Western Countries: August 7 Update</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 08 August 2020 at 2:52&thinsp;pm
-      • Kevin Drum – Mother Jones
-      
-        • by Kevin Drum
-      
-      
-    </p></div>
-    <p>Here’s the coronavirus death toll through August 7. The raw data from Johns Hopkins is <a href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv">here.</a></p>
-<figure id="attachment_857983"  class="inline-image alignnone" style="max-width: 1300px;"><img class="size-full wp-image-857983" src="https://www.motherjones.com/wp-content/uploads/2020/08/blog_covid19_country_comparison_august_07_deaths.gif" alt="" width="1300" height="2018"></figure>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://512pixels.net/2020/08/why-apple-believes-its-an-ai-leader/">Why Apple Believes It’s an AI Leader</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 08 August 2020 at 12:59&thinsp;pm
-      • 512 Pixels
-      
-        • by Stephen Hackett
-      
-      
-    </p></div>
-    <p><a href="https://arstechnica.com/gadgets/2020/08/apple-explains-how-it-uses-machine-learning-across-ios-and-soon-macos/">Samuel Axon at Ars Technica:</a></p>
-<blockquote><p>
-  I spoke at length with John Giannandrea, Apple&#8217;s Senior Vice President for Machine Learning and AI Strategy, as well as with Bob Borchers, VP of Product Marketing. They described Apple&#8217;s AI philosophy, explained how machine learning drives certain features, and argued passionately for Apple&#8217;s on-device AI/ML strategy.
-</p></blockquote>
-<p>This is a really interesting interview that&#8217;s well worth a weekend read.</p>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="linkpost_title"><a href="https://www.merriam-webster.com/dictionary/cherry-pick">The Etymology of ‘Cherry-Pick’</a> <span class="linkpost_arrow">→</span></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 08 August 2020 at 6:47&thinsp;am
-      • Daring Fireball
-      
-        • by John Gruber
-      
-      
-       • <span class="permalink"><a href="https://daringfireball.net/linked/2020/08/07/cherry-pick">∞</a></span>
-      
-    </p></div>
-    <p>I wound up looking into the etymology of “cherry-pick” while writing <a href="https://daringfireball.net/linked/2020/08/07/instagram-hashtag-bug">this post</a> earlier today, and I’m simply astounded by this note from Merriam-Webster:</p>
-
-<blockquote>
-  <p>The first known use of <em>cherry-pick</em> was in 1965.</p>
-</blockquote>
-
-<p>I’m shocked that <em>cherry-pick</em> is so recent. I figured it was not just old but maybe <em>really</em> old, centuries old. Is this right?</p>
-
-<p><strong>Update 1:</strong> The Online Etymology Dictionary <a href="https://www.etymonline.com/word/cherry-pick">pegs <em>cherry-pick</em>’s origin as 1959</a> — a little earlier, but not much.</p>
-
-<p><strong>Update 2:</strong> Anu Garg, founder and writer of the excellent Wordsmith and its A.Word.A.Day newsletter, <a href="https://wordsmith.org/words/cherry-pick.html">pegged <em>cherry-pick</em>’s earliest documented use as 1966</a>.</p>
-
-<p><strong>Update 3:</strong> The other OED <a href="https://twitter.com/howe/status/1291910907090448384">has an instance of “cherry-picker” as a railroad industry term for a switchman from 1940</a>, which usage explains why the idiom is about cherries — the switch lights were red.</p>
-
-<div>
-
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/when-will-covid-19-deaths-start-to-decline/">When Will COVID-19 Deaths Start to Decline?</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 08 August 2020 at 1:54&thinsp;am
-      • Kevin Drum – Mother Jones
-      
-        • by Kevin Drum
-      
-      
-    </p></div>
-    <p>A couple of people have asked for an update of a chart I put up <a href="https://www.motherjones.com/kevin-drum/2020/06/if-covid-19-cases-are-going-up-why-is-the-death-rate-going-down/">a few weeks ago</a> comparing the COVID-19 case rate with the death rate. Here it is:</p>
-<p><figure id="attachment_857971"  class="inline-image alignnone" style="max-width: 1267px;"><img class="size-full wp-image-857971" src="https://www.motherjones.com/wp-content/uploads/2020/08/blog_covid19_case_vs_death_august_7.gif" alt="" width="1267" height="616"></figure>
-<p>During the first round of COVID-19, the death rate started to decline about two weeks after the case rate began falling. If the same thing happens this time around, deaths have already peaked and will start to decline in about a week or so.</p>
-<p>I&#8217;m not saying this is what will happen. There have been too many surprises already in the COVID-19 numbers, and the actual death rate will depend a lot on how seriously everyone is taking the recommended countermeasures (masks, social distancing, etc.). I can&#8217;t predict that—and neither can anyone else—which means I can&#8217;t predict the death rate trend either.</p>
-<p>Still, if the second round of COVID-19 is like the first round, late July would have been a decent baseline guess for peak deaths—which turned out to be the case—and mid-August is our best guess for the start of the decline.</p>
-    
     
   </li>
   
@@ -1447,7 +1246,7 @@ In my workshop and studio, I label boxes, shelves, drawers, cases, bins, and par
         By <a href="http://leancrew.com/all-this/2015/11/simpler-syndication/">Dr Drang</a>.
     </p>
     <p>
-        Last updated on 11 August 2020 at 12:30&thinsp;am.
+        Last updated on 11 August 2020 at 6:12&thinsp;am.
         Made with Python app & Jinja (based on script by configuration of the repository)
     </p>
   </footer>
