@@ -16,6 +16,239 @@
   
   <li>
     <div class="article_title">
+      <h3 class="linkpost_title"><a href="https://www.penny-arcade.com/comic/2020/08/19">HBO Whatnow</a> <span class="linkpost_arrow">→</span></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 20 August 2020 at 5:27&thinsp;pm
+      • Daring Fireball
+      
+        • by John Gruber
+      
+      
+       • <span class="permalink"><a href="https://daringfireball.net/linked/2020/08/20/penny-arcade-hbo">∞</a></span>
+      
+    </p></div>
+    <p>Penny Arcade on HBO Max vs. HBO Go vs. HBO Now vs. Why the Hell Isn’t It Just Called “HBO” You  Dumbasses You Already Own the World’s Greatest Brand Representing Premium Subscription Video Content.</p>
+
+<div>
+
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
+      <h3 class="fullpost_title"><a href="http://feedproxy.google.com/~r/TheEndeavour/~3/xAyixO3GHgE/">All English vowel sounds in one sentence</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 20 August 2020 at 4:24&thinsp;pm
+      • John D. Cook
+      
+        • by John
+      
+      
+    </p></div>
+    <p>Contrary to popular believe, English has more than five or ten vowel sounds. The actual number is disputed because of disagreements over when two sounds are sufficiently distinct to be classified as separate sounds.</p>
+<p>I ran across a <a href="https://lingthusiasm.com/post/159237203511/lingthusiasm-episode-6-all-the-sounds-in-all-the">podcast episode</a> recently that mentioned a sentence that demonstrates a different English vowel sound in each word:</p>
+<p style="padding-left: 40px;">Who would know naught of art must learn, act, and then take his ease.</p>
+<p>The hosts noted that to get all the vowels in, you need to read the sentence with non-rhotic pronunciation, i.e. suppressing the r in <em>art</em>.</p>
+<p>I&#8217;ll run this sentence through some software that returns the phonetic spelling of each word in IPA symbols to see the distinct vowel sounds that way. First I&#8217;ll use Python, then Mathematica</p>
+<h2>Python</h2>
+<p>Let&#8217;s run this through some Python code that converts English words to <abbr title="International Phonetic Alphabet">IPA</abbr> notation so we can look at the vowels.</p>
+<pre>    import eng_to_ipa as ipa
+
+    text = "Who would know naught of art must learn, act, and then take his ease."
+    print(ipa.convert(text))
+</pre>
+<p>This gives us</p>
+<p style="padding-left: 40px;">hu wʊd noʊ nɔt əv ɑrt məst lərn, ækt, ənd ðɛn teɪk hɪz iz</p>
+<p>Which includes the following vowel symbols:</p>
+<ol>
+<li>u</li>
+<li>ʊ</li>
+<li>oʊ</li>
+<li>ɔ</li>
+<li>ə</li>
+<li>ɑ</li>
+<li>ə</li>
+<li>ə</li>
+<li>æ</li>
+<li>ə</li>
+<li>ɛ</li>
+<li>eɪ</li>
+<li>ɪ</li>
+<li>i</li>
+</ol>
+<p>This has some duplicates: 5, 7, 8, and 10 are all schwa symbols.</p>
+<p>By default the <code>eng_to_ipa</code> gives one way to write each word in IPA notation. There is an optional argument, <code>retrieve_all</code> that defaults to <code>False</code> but may return more alternatives when set to <code>True</code>. However, in our example the only difference is that the second alternative writes <em>and</em> as <code>ænd</code> rather than <code>ənd</code>.</p>
+<p>It looks like the <code>eng_to_ipa</code> module doesn&#8217;t transcribe vowels with sufficient resolution to distinguish some of the sounds in the model sequence. For example, it doesn&#8217;t seem to distinguish the stressed sound <code>ʌ</code> from the unstressed <code>ə</code>.</p>
+<h2>Mathematica</h2>
+<p>Here&#8217;s Mathematica code to split the model sentence into words and show the IPA pronunciation of each word.</p>
+<pre>
+    text = "who would know naught of art must \
+        learn, act, and then take his ease" 
+    ipa[w_] := WordData[w, "PhoneticForm"]
+    Map[ipa, TextWords[text]]
+</pre>
+<p>This returns</p>
+<pre>
+    {"hˈu", "wˈʊd", "nˈoʊ", "nˈɔt", "ˈʌv", "ˈɒrt", "mˈʌst", 
+    "lˈɝn", "ˈækt", "ˈænd", "ðˈɛn", "tˈeɪk", "hˈɪz", "ˈiz"}
+</pre>
+<p>By the way, I had to write the first word as &#8220;who&#8221; because <code>WordData</code> won&#8217;t do it for me. If you ask for </p>
+<pre>    ipa["Who"]</pre>
+<p>Mathematica will return</p>
+<pre>    Missing["NotAvailable"]</pre>
+<p>though it works as expected if you send it &#8220;who&#8221; rather than &#8220;Who.&#8221;</p>
+<p>Let&#8217;s remove the stress marks and join the words together so we can compare the Python and Mathematica output. The top line is from Python and the bottom is from Mathematica.</p>
+<pre>
+    hu wʊd noʊ nɔt əv ɑrt məst lərn ækt ænd ðɛn teɪk hɪz iz
+    hu wʊd noʊ nɔt ʌv ɒrt mʌst lɝn  ækt ænd ðɛn teɪk hɪz iz
+</pre>
+<p>There are a few differences, summarized in the table below. Since the symbols are a little difficult to tell apart, I&#8217;ve included their Unicode code points.</p>
+<pre>
+    |-------+------------+-------------|
+    | Word  | Python     | Mathematica |
+    |-------+------------+-------------|
+    | of    | ə (U+0259) | ʌ (U+028C)  |
+    | must  | ə (U+0259) | ʌ (U+028C)  |
+    | art   | ɑ (U+0251) | ɒ (U+0252)  |
+    | learn | ə (U+0259) | ɝ (U+025D)  |
+    |-------+------------+-------------|
+</pre>
+<p>Mathematica makes some distinctions that Python missed, and uses more of the non-rhotic pronounciation that the model sentence is intended to use.</p>
+<h2>More linguistics posts</h2>
+<ul>
+<li class="link"><a href="https://www.johndcook.com/blog/2019/08/27/heaps-law/">Estimating vocabulary size with Heaps law</a></li>
+<li class="link"><a href="https://www.johndcook.com/blog/2014/02/24/creating-a-writing-system/">Writing down an unwritten language</a></li>
+<li class="link"><a href="https://www.johndcook.com/blog/2019/10/18/chinese-character-entropy/">Chinese character frequency and entropy</a></li>
+</ul>
+<img src="http://feeds.feedburner.com/~r/TheEndeavour/~4/xAyixO3GHgE" height="1" width="1" alt=""/>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
+      <h3 class="fullpost_title"><a href="https://kk.org/cooltools/simple-trick-for-determining-2-1mm-or-2-5mm-barrel-jacks/">Simple Trick for Determining 2.1mm or 2.5mm Barrel Jacks</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 20 August 2020 at 4:00&thinsp;pm
+      • Cool Tools
+      
+        • by claudia
+      
+      
+    </p></div>
+    <p><img src="https://kk.org/cooltools" /></p><p><strong>Simple Trick for Determining 2.1mm or 2.5mm Barrel Jacks</strong></p>
+<div id="attachment_36850" style="width: 610px" class="wp-caption alignnone"><img class="size-full wp-image-36850" src="https://kk.org/cooltools/files/2020/08/barreljacks.png" alt="If it fits, you must equip." width="600" height="210" /><p class="wp-caption-text">If it fits, you must equip.</p></div>
+<p>Here’s a tip I learned from Donald Bell’s <a href="https://www.youtube.com/channel/UCfMJZK2etTZFGXYDh8p3x3w?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">Maker Update</a>. It’s from an old DigiKey <a href="https://youtu.be/iHyA4M0A8V4?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">“Teaching Moment</a>.” Many barrel jacks have a consistent 5.5mm outside diameter. But the inside diameter can vary, usually either between 2.1mm or 2.5mm. If you don’t have your digital calipers handy, you can determine this inside diameter with common objects: a toothpick, a ball point pen, or a test probe. The brass housing on a ball point pen is usually 2.2mm. If it doesn’t fit inside the barrel of your jack, then the jack is 2.1mm. If the pen easily fits inside, the jack is 2.5mm. A standard toothpick is 2.1mm. If it fits snugly in the jack, it’s a 2.1mm jack. Also, a common multimeter probe needle with fit closely inside of a 2.1mm jack and be very sloppy inside of a 2.5mm jack.</p>
+<p><strong>Yet Another Method for Removing a Stripped Screw</strong></p>
+<div id="attachment_36849" style="width: 610px" class="wp-caption alignnone"><img class="size-full wp-image-36849" src="https://kk.org/cooltools/files/2020/08/stripscrew.png" alt="Wrap that rascal." width="600" height="494" /><p class="wp-caption-text">Wrap that rascal.</p></div>
+<p>There are at least a dozen ways of removing stripped screws. Many of them involve getting rubber material (say, from a rubber band) between the screw and the bit. From the <em>Instagram</em> page for <a href="https://www.instagram.com/p/B2zWrkMHK7b/?fbclid=IwAR3OJ5nRUG3GuY5OaS3MejjEcEyrIgwLJJuIp0o7KVqZ0YStRrJWbqFM31U&amp;igshid=u72jdj8qyf7c&amp;utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">Tradecktory</a> comes this idea on using a disposable rubber glove wrapped around the bit to do the trick.</p>
+<p><strong>Creating a Level from a Carpenter&#8217;s Square</strong></p>
+<div id="attachment_36848" style="width: 610px" class="wp-caption alignnone"><img class="size-full wp-image-36848" src="https://kk.org/cooltools/files/2020/08/carpentersquare.jpeg" alt="Getting on the level in a pinch." width="600" height="600" /><p class="wp-caption-text">Getting on the level in a pinch.</p></div>
+<p>Here’s an oldie but goodie from the <a href="https://www.instagram.com/acmetools/?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">Acme Tools</a> <em>Instagram</em> feed: If you don’t have a level handy, wrap a chalk line over the top of a carpenter’s square at the 90 degree angle. When the string lines up with the 45 degree mark on the square, your surface is level. I recently bought the classic <a href="https://geni.us/eWtEm3B?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">Swanson Tools Speed Square</a> and couldn’t love it any more. A great tool for under ten bones. It even comes with the iconic (and very handy) <a href="https://www.google.com/url?cd=&amp;esrc=s&amp;q=&amp;rct=j&amp;sa=t&amp;source=web&amp;url=https%3A%2F%2Firp-cdn.multiscreensite.com%2F57e36f82%2Ffiles%2Fuploaded%2FSpeedSquareInstructionBook2.pdf&amp;usg=AOvVaw1HuEh4CZiQnQ6ENsNjSUTs&amp;utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter&amp;ved=2ahUKEwjDlcy86ZjrAhXqx1kKHUrrBkoQFjAAegQIAhAB" target="_blank">Speed Square Blue Book</a> [PDF].</p>
+<p><strong>Using a Shop Weight as a Temporary Stop Block</strong></p>
+<div id="attachment_36847" style="width: 610px" class="wp-caption alignnone"><img class="size-full wp-image-36847" src="https://kk.org/cooltools/files/2020/08/shopweight.png" alt="Weights and measures." width="600" height="339" /><p class="wp-caption-text">Weights and measures.</p></div>
+<p>In this <a href="https://youtu.be/pfHtIs9uZZA?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">recent Laura Kampf video</a>, where she builds a sweet little geodesic dome greenhouse out of trash, she employs a tip every maker should store in their mental toolbox. She uses a shop weight as a quick stop block for repetitive cutting of material to the same length. What she is cutting is ingenious, too. She used metal strapping bands as the struts for her wee dome.</p>
+<p><strong>Making a Quick Plastic/Laminate Cutter</strong></p>
+<div id="attachment_36846" style="width: 610px" class="wp-caption alignnone"><img class="size-full wp-image-36846" src="https://kk.org/cooltools/files/2020/08/laminatecutter.png" alt="Making the knife you need." width="600" height="610" /><p class="wp-caption-text">Making the knife you need.</p></div>
+<p>In a recent <a href="https://www.instagram.com/jimmydiresta/?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">Jimmy DiResta Instagram</a> story, he shared a useful tip. He was cutting a bunch of Formica and didn’t have a <a href="https://geni.us/YG9IBa?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">plastic/laminate cutter </a>handy. So, he simply cut a hook in a utility knife to achieve the same basic effect.</p>
+<p><strong>Using the Pomodoro Technique to Fight Distraction</strong><br />
+My long-time pal (and <em>Cool Tools</em> and <em>Boing Boing</em> colleague) Mark Frauenfelder has just launched a new newsletter, called <a href="https://themagnet.substack.com/p/the-magnet-0001?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">The Magnet</a>. There is a free version and a paid subscription version. <a href="https://boingboing.net/2020/08/11/why-im-launching-the-magnet.html?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">More info here</a>.</p>
+<p>In his <a href="https://themagnet.substack.com/p/the-magnet-0001?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">first issue</a>, he talks about the Pomodoro productivity technique. This is a method for trying to focus on the work at hand in our extraordinarily distracted modern world. The basic idea is to set a timer for a set interval of time (say, 25 minutes), come up for air for a set interval (say 10 minutes), set the timer again, rinse, repeat. When under the timer, you do <em>nothing</em> but the work at hand. No checking your phone, email, FaceFart, etc.</p>
+<p>I had no idea it had a name, but I’ve used the timer technique for years. Sometimes, it’s the only way I can get anything productive done. I set my timer for 56 minute sessions (don’t ask).</p>
+<p>If you have similar distraction issues, consider giving this method a try.</p>
+<p>Sketchplanations has a good, short guide to the <a href="https://www.sketchplanations.com/post/179972023741/the-pomodoro-technique-a-super-simple-method?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">Pomodoro Technique</a>..</p>
+<p><strong>Shop Talk</strong></p>
+<div id="attachment_36845" style="width: 610px" class="wp-caption alignnone"><img class="size-full wp-image-36845" src="https://kk.org/cooltools/files/2020/08/stanleybuttguage.jpeg" alt="The Stanley Butt Gauge No. 93" width="600" height="450" /><p class="wp-caption-text">The Stanley Butt Gauge No. 93</p></div>
+<p>Reader <strong>Chris Johnson</strong> sent this response to <a href="https://www.getrevue.co/profile/garethbranwyn/issues/gareth-s-tips-tools-and-shop-tales-issue-57-267691?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">last week’s piece</a> on cool specialty tools and the antique Stanley ruler with calipers: “I’m a fan of old tools, too, having inherited a bunch from various relatives past. Here’s one from my Uncle Soren, a Norwegian carpenter who worked in Brooklyn in the 20s through 60s. It’s the Stanley Butt Gauge No. 93 (used for installing doors). I’ve hung doors, but have never thought to use it. It generally sits on my desk as a reminder to occasionally get my hands off the keyboard and onto a physical project of some sort.”</p>
+<p>***</p>
+<p>In response to last issue’s piece on using wine bottles to irrigate plants when you’re away, I got a bunch of responses. Here’s one:</p>
+<p><strong>John Seiffer</strong>: “My wife tried the wine bottle plant watering and said the dirt just clogs it up. She’s a big fan of using wine bottles stuck <a href="https://geni.us/b8SG?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">in these</a>. Apparently the terra cotta works the magic.”</p>
+<p>There are also <a href="https://geni.us/jO55wO8?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">plastic ones</a> that have valves with an adjustable drip rate.</p>
+<div class='ctx-subscribe-container ctx-personalization-container ctx_default_placement ctx-clearfix'></div><div class='ctx-social-container ctx_default_placement ctx-clearfix'></div><div class='ctx-module-container ctx_default_placement ctx-clearfix'></div><span class="ctx-article-root"><!-- --></span><p>[Gareth’s Tips, Tools, and Shop Tales is published by Cool Tools Lab. To receive the newsletter a week early, sign up <a href="https://www.getrevue.co/profile/garethbranwyn">here.</a>]</p>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
+      <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/health-update-53/">Health Update</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 20 August 2020 at 3:44&thinsp;pm
+      • Kevin Drum – Mother Jones
+      
+        • by Kevin Drum
+      
+      
+    </p></div>
+    <p>Nothing new to report for August. My M-protein level has been rock steady for the past few months, which means the multiple myeloma is under control for now.</p>
+<figure id="attachment_860514"  class="inline-image alignnone" style="max-width: 1164px;"><img loading="lazy" class="size-full wp-image-860514" src="https://www.motherjones.com/wp-content/uploads/2020/08/blog_m_protein_august_2020-1.gif" alt="" width="1164" height="670"></figure>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
+      <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/stephen-bannon-indicted-for-wire-fraud/">Stephen Bannon Indicted for Wire Fraud</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 20 August 2020 at 3:06&thinsp;pm
+      • Kevin Drum – Mother Jones
+      
+        • by Kevin Drum
+      
+      
+    </p></div>
+    <p>Is there anybody left in the Trump administration who <em>hasn&#8217;t</em> been indicted for <a href="https://www.washingtonpost.com/national-security/stephen-bannon-arrested-charged/2020/08/20/6d46847c-e2ea-11ea-b69b-64f7b0477ed4_story.html?hpid=hp_hp-banner-high_bannon-1010am%3Ahomepage%2Fstory-ans">some grift or another?</a></p>
+<blockquote>
+<p><strong>Federal prosecutors in New York on Thursday unsealed criminal charges against Stephen K. Bannon,</strong> President Trump’s former chief strategist, and three other men they alleged defrauded hundreds of thousands of donors using an online crowdfunding campaign that was advertised as raising money to build a wall on the U.S. border with Mexico&#8230;.<strong>Prosecutors alleged they and two others routed payments from the campaign through the non-profit and another shell company and disguised them with fake invoices to help keep their personal pay secret.</strong> All four were arrested Thursday and are expected to make court appearances later in the day. They are charged with conspiracy to commit wire fraud and money laundering.</p>
+</blockquote>
+<p>I suppose they can all hold out hope for a presidential pardon.</p>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
+      <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/coronavirus-growth-in-western-countries-august-19-update/">Coronavirus Growth in Western Countries: August 19 Update</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 20 August 2020 at 2:38&thinsp;pm
+      • Kevin Drum – Mother Jones
+      
+        • by Kevin Drum
+      
+      
+    </p></div>
+    <p>Here’s the coronavirus death toll through August 19. The raw data from Johns Hopkins is <a href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv">here.</a></p>
+<figure id="attachment_860424"  class="inline-image alignnone" style="max-width: 1300px;"><img loading="lazy" class="size-full wp-image-860424" src="https://www.motherjones.com/wp-content/uploads/2020/08/blog_covid19_country_comparison_august_19_deaths.gif" alt="" width="1300" height="2024"></figure>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
+      <h3 class="fullpost_title"><a href="https://www.macsparky.com/blog/2020/8/maker-manager-consumer">Maker, Manager, Consumer</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 20 August 2020 at 2:00&thinsp;pm
+      • MacSparky
+      
+        • by David Sparks
+      
+      
+    </p></div>
+    <p class="">I’ve been thinking lately about my journaling workflows. I’m increasingly using digital tools for daily journaling and questioning a lot of assumptions. One of those is about the purpose of journaling my day. Am I doing it to figure out what I was doing at 2:00 p.m. on a given day, or something else? The more I think about it, for me, the answer is something else.</p><p class="">Now I’m looking at my days not in terms of what I was doing at a specific time, but instead what I was doing&nbsp;<em>with my time</em>. I’m usually wearing one of three hats: maker, manager, or consumer.</p><p class=""><strong>The Maker</strong></p><p class="">Whenever I’m adding something, I’m making. I interpret this broadly. Making Field Guides, writing blog posts, doing client work, and making music are examples of things I make. While a lot of the things I make are shared with the world, others aren’t. Whether it’s for others or for me, I’m still making.</p><p class=""><strong>The Manager</strong></p><p class="">For Maker Sparky to produce, Manager Sparky needs to wrangle everything else. This is both an essential support role and an easy trap to fall into.</p><p class=""><strong>The Consumer</strong></p><p class="">When I’m not making or managing, I’m consuming. This ranges from watching <em>Star Wars</em> to reading scholarly articles. It’s all-consuming. This isn’t bad. It’s one of the best ways I come up with ideas for Maker Sparky.</p><p class="">My purpose in journaling is tracking how I’m spending my time in these roles. I don’t view any of them as inherently good or bad. The magic is in the balance. While making is most important to me, both managing and consuming enable making. I want to spend more time making than consuming. I need to spend time managing, but not go down the management/productivity rabbit hole so far that I don’t make anything.</p><p class="">So with this in mind, I’ve been focusing my journaling lately not so much on what I had for lunch, but what I make, manage, and consume. Using tags, I can then see it on a daily, weekly, and even monthly basis. If I look at my week and realize I spent most of my time sharpening pencils and sorting tasks (manager) and not enough time producing content (maker), I know I need to make changes. You can get similar information by tracking your time, but I think there is something more concrete looking at a list of things you’ve made, managed, and consumed over a period of time.</p><p class="">Implementing this isn’t difficult. You could create a text file and start making a list. You can do the same thing with a pad of paper and a pencil, or, if you’re using a digital journal like Day One, add tags for #maker, #manager, and #consumer. The real benefit of this comes in planning and review. If you’re going to track yourself as a maker, manager, and consumer, you should have some expectations and a feedback mechanism for living up to them.</p>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
       <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/obama-offers-up-the-simple-truth-about-trump/">Obama Offers Up the Simple Truth About Trump</a></h3>
     </div>
     <div class="article_meta"><p>
@@ -727,7 +960,7 @@ personalized “For You” page.</p>
       
       
     </p></div>
-    <p><img src="https://kk.org/cooltools" /></p><div class="epyt-video-wrapper"><iframe  id="_ytid_77170"  width="480" height="270"  data-origwidth="480" data-origheight="270"  src="https://www.youtube.com/embed/ewcbNRP5BBE?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;fs=1&#038;playsinline=0&#038;autohide=2&#038;theme=dark&#038;color=red&#038;controls=1&#038;" class="__youtube_prefs__  epyt-is-override  no-lazyload" title="YouTube player"  allow="autoplay; encrypted-media" allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></div>
+    <p><img src="https://kk.org/cooltools" /></p><div class="epyt-video-wrapper"><iframe  id="_ytid_21942"  width="480" height="270"  data-origwidth="480" data-origheight="270"  src="https://www.youtube.com/embed/ewcbNRP5BBE?enablejsapi=1&#038;autoplay=0&#038;cc_load_policy=0&#038;iv_load_policy=1&#038;loop=0&#038;modestbranding=0&#038;rel=1&#038;fs=1&#038;playsinline=0&#038;autohide=2&#038;theme=dark&#038;color=red&#038;controls=1&#038;" class="__youtube_prefs__  epyt-is-override  no-lazyload" title="YouTube player"  allow="autoplay; encrypted-media" allowfullscreen data-no-lazy="1" data-skipgform_ajax_framebjll=""></iframe></div>
 <p><strong>Tools (Recommended)</strong>:<br />
 <a href="http://www.amazon.com/exec/obidos/ASIN/B01ADBNEJE/seanmichaelragan-20" target="_blank" rel="noopener">HHIP 8600-0041 28 Piece Transfer Punch Set, 3/32&#8243; &#8211; 1/2”</a></p>
 <p><a href="http://www.amazon.com/exec/obidos/ASIN/B0000DD4F1/seanmichaelragan-20" target="_blank" rel="noopener">Grizzly G5655 25-Piece Transfer Punch Set, Metric</a></p>
@@ -906,26 +1139,6 @@ personalized “For You” page.</p>
   
   <li>
     <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/ceo-pay-surged-upward-in-2019/">CEO Pay Surged Upward in 2019</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 18 August 2020 at 6:49&thinsp;pm
-      • Kevin Drum – Mother Jones
-      
-        • by Kevin Drum
-      
-      
-    </p></div>
-    <p><a href="https://www.epi.org/publication/ceo-compensation-surged-14-in-2019-to-21-3-million-ceos-now-earn-320-times-as-much-as-a-typical-worker/">CEO pay was up in 2019!</a></p>
-<p><figure id="attachment_859966"  class="inline-image alignnone" style="max-width: 1300px;"><img loading="lazy" class="size-full wp-image-859966" src="https://www.motherjones.com/wp-content/uploads/2020/08/blog_epi_ceo_pay_2019.jpg" alt="" width="1300" height="1043" srcset="https://www.motherjones.com/wp-content/uploads/2020/08/blog_epi_ceo_pay_2019.jpg 1303w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_epi_ceo_pay_2019.jpg?resize=321,257 321w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_epi_ceo_pay_2019.jpg?resize=441,354 441w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_epi_ceo_pay_2019.jpg?resize=50,40 50w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_epi_ceo_pay_2019.jpg?resize=1300,1043 1300w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_epi_ceo_pay_2019.jpg?resize=990,794 990w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_epi_ceo_pay_2019.jpg?resize=642,515 642w" sizes="(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px" /></figure>
-<p>The average big company CEO now makes 320 times as much as the average worker. That doesn&#8217;t yet match the glorious heights reached at the end of the dotcom boom, but it&#8217;s getting there—and 2020 is looking good so far.</p>
-<p>Just imagine: as recently as 1990, CEO pay was only about 60 times that of the average worker. That&#8217;s only 30 years ago. If a big time CEO was paid that amount today he&#8217;d be the laughingstock of his country club.</p>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
       <h3 class="fullpost_title"><a href="https://512pixels.net/2020/08/2020-relay-fm-podcastathon-for-st-jude/">2020 Relay FM Podcastathon for St. Jude</a></h3>
     </div>
     <div class="article_meta"><p>
@@ -956,25 +1169,6 @@ personalized “For You” page.</p>
       
     </p></div>
     <p class="">Academic physician Jeff Taekman&nbsp;<a href="https://wippp.com/home/taekman-writing-workflow-2020" target="_blank"><span>wrote up his Apple-based academic writing workflows and critical apps</span></a>. There is plenty of detail. I love these deep dives from folks who get work done with their Apple technology.</p>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/coronavirus-growth-in-western-countries-august-17-update/">Coronavirus Growth in Western Countries: August 17 Update</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 18 August 2020 at 2:30&thinsp;pm
-      • Kevin Drum – Mother Jones
-      
-        • by Kevin Drum
-      
-      
-    </p></div>
-    <p>Here’s the coronavirus death toll through August 17. There are two things to notice. First, Italy&#8217;s blip is continuing. Second, <a href="https://www.ft.com/content/f51d161d-86c7-40cd-a5f6-cb72ab52b026">in the UK,</a> &#8220;The government has overhauled the way coronavirus death data is compiled in England after scientists revealed Public Health England had been counting people as having died from the virus regardless of when they tested positive. The move meant the UK death toll was revised downwards by 5,377 to 41,329 on Wednesday after a review concluded the daily death figure should only include deaths which had occurred within 28 days of a positive test. The new methodology brings England in line with rest of the UK.&#8221; Johns Hopkins caught up with this today, which is why the UK trendline is suddenly at zero and the cumulative death rate has suddenly declined to 628 per million.</p>
-<p>The raw data from Johns Hopkins is <a href="https://github.com/CSSEGISandData/COVID-19/blob/master/csse_covid_19_data/csse_covid_19_time_series/time_series_covid19_deaths_global.csv">here.</a></p>
-<figure id="attachment_859796"  class="inline-image alignnone" style="max-width: 1300px;"><img loading="lazy" class="size-full wp-image-859796" src="https://www.motherjones.com/wp-content/uploads/2020/08/blog_covid19_country_comparison_august_17_deaths.gif" alt="" width="1300" height="2022"></figure>
     
     <hr class="between_posts"/>
   </li>
@@ -1321,7 +1515,7 @@ ahead of the guidelines that protect our customers.</p>
         By <a href="http://leancrew.com/all-this/2015/11/simpler-syndication/">Dr Drang</a>.
     </p>
     <p>
-        Last updated on 20 August 2020 at 12:15&thinsp;pm.
+        Last updated on 20 August 2020 at 6:12&thinsp;pm.
         Made with Python app & Jinja (based on script by configuration of the repository)
     </p>
   </footer>
