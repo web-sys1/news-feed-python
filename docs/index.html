@@ -16,6 +16,42 @@
   
   <li>
     <div class="article_title">
+      <h3 class="fullpost_title"><a href="http://feedproxy.google.com/~r/TheEndeavour/~3/zuQkSzQEXuw/">Including a little Hebrew in an English LaTeX document</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 22 August 2020 at 5:59&thinsp;pm
+      • John D. Cook
+      
+        • by John
+      
+      
+    </p></div>
+    <p>I was looking up how to put a little Hebrew inside a LaTeX document and ran across a good answer on <a href="https://tex.stackexchange.com/questions/14777/whats-a-simple-way-to-typeset-a-small-amount-of-hebrew-content-using-tex/15550#15550">tex.stackexchange</a>. Short answer: use the <a href="https://www.ctan.org/tex-archive/language/hebrew/cjhebrew">cjhebrew</a> package.</p>
+<p>In a nutshell, you put your Hebrew text between <code>\&lt;</code> and <code>&gt;</code> using the <code>cjhebrew</code> package&#8217;s transliteration. You write left-to-right, and the text will appear right-to-left. For example, <code>\&lt;'lp&gt;</code> produces</p>
+<p><img loading="lazy" class="aligncenter size-medium" src="https://www.johndcook.com/aleph_cjhebrew.png" alt="aleph in Hebrew" width="99" height="56" /></p>
+<p>using &#8216; for א, l for ל, and p for ף.</p>
+<p>The code for each Hebrew letter is its English transliteration, with three footnotes.</p>
+<p>First, when two Hebrew letters roughly correspond to the same English letter, one form may have a dot in front of it. For example, ט and ת both make a <em>t</em> sound; the former is encoded as <code>.t</code> and the latter as <code>t</code>.</p>
+<p>Second, five Hebrew letters have a different form when used at the end of a word [1]. For such letters the final form is the capitalized value of the regular form. For example, פ and its final form ף are denoted by <code>p</code> and <code>P</code> respectively. The package will automatically choose between regular and final forms, but you can override this by using the capital letter in the middle of a word or by using a <code>|</code> after a regular form at the end of a word.</p>
+<p>Finally, the letter ש is written with a <code>/s</code> The author already used <code>s</code> for ס and <code>.s</code> for צ, so he needed a new symbol to encode a third letter corresponding to <em>s</em> [2]. Also ש has a couple other forms. The letter can make either the <em>sh</em> or <em>s</em> sound, and you may see dots on top of the letter to distinguish these. The <code>cjhebrew</code> package uses <code>+s</code> for ש with a dot on the top right, the <em>sh</em> sound, and <code>,s</code> for ש with a dot on the top left, the <em>s</em> sound.</p>
+<p>Here is the complete consonant transliteration table from the <code>cjhebrew</code> documentation.</p>
+<p><img loading="lazy" class="aligncenter size-medium" src="https://www.johndcook.com/cjhebrew.png" width="878" height="216" /></p>
+<p>Note that the code for א is a single quote <code>'</code> and the code for ע is a back tick (grave accent) <code>`</code>.</p>
+<p>You can also add vowel points (<em>niqqud</em>). These are also represented by their transliteration to English sounds, with one exception. The sh&#8217;va is either silent or represents a schwa sound, so there&#8217;s not a convenient transliterations. But the sh&#8217;va looks like a colon, so it is represented by a colon. See the package documentation for more details.</p>
+<h2>Related posts</h2>
+<ul>
+<li class="link"><a href="https://www.johndcook.com/blog/math-symbols/#aleph">Use of Aleph in math</a></li>
+<li class="link"><a href="https://www.johndcook.com/blog/2018/07/21/fraktur-math/">Fraktur symbols in math</a></li>
+<li class="link"><a href="https://www.johndcook.com/blog/math_symbols/">Math symbols in TeX, HTML, and Unicode</a></li>
+</ul>
+<p>[1] You may have seen something similar in Greek with sigma σ and final sigma ς. Even English had something like this. For example, people used to use a different form of <em>t</em> at the end of a word when writing cursive. My mother wrote this way.</p>
+<p>[2] It would be more phonetically faithful to transliterate צ as ts, but that would make the LaTeX package harder to implement since it would have to disambiguate whether <code>ts</code> represents צ or תס.</p><p>The post <a href="https://www.johndcook.com/blog/2020/08/22/hebrew-latex/" target="_blank">Including a little Hebrew in an English LaTeX document</a> first appeared on <a href="https://www.johndcook.com/blog/" target="_blank">John D. Cook</a>.</p><img src="http://feeds.feedburner.com/~r/TheEndeavour/~4/zuQkSzQEXuw" height="1" width="1" alt=""/>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
       <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/capital-gains-cuts-are-just-another-con-to-benefit-the-rich/">Capital Gains Cuts Are Just Another Con to Benefit the Rich</a></h3>
     </div>
     <div class="article_meta"><p>
@@ -1342,7 +1378,7 @@ My long-time pal (and <em>Cool Tools</em> and <em>Boing Boing</em> colleague
         By <a href="http://leancrew.com/all-this/2015/11/simpler-syndication/">Dr Drang</a>.
     </p>
     <p>
-        Last updated on 22 August 2020 at 6:12&thinsp;pm.
+        Last updated on 23 August 2020 at 12:33&thinsp;am.
         Made with Python app & Jinja (based on script by configuration of the repository)
     </p>
   </footer>
