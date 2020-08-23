@@ -16,6 +16,49 @@
   
   <li>
     <div class="article_title">
+      <h3 class="fullpost_title"><a href="http://feedproxy.google.com/~r/TheEndeavour/~3/UMtQwYvLr1I/">Permutable polynomials</a></h3>
+    </div>
+    <div class="article_meta"><p>
+      Posted on 23 August 2020 at 1:49&thinsp;am
+      • John D. Cook
+      
+        • by John
+      
+      
+    </p></div>
+    <p>Two polynomials <em>p</em>(<em>x</em>) and <em>q</em>(<em>x</em>) are said to be permutable if</p>
+<p style="padding-left: 40px;"><em>p</em>(<em>q</em>(<em>x</em>)) = <em>q</em>(<em>p</em>(<em>x</em>))</p>
+<p>for all <em>x</em>. It&#8217;s not hard to see that Chebyshev polynomials are permutable.</p>
+<p>First,</p>
+<p style="padding-left: 40px;"><em>T</em><sub><em>n</em></sub>(<em>x</em>) = cos (<em>n </em>arccos(<em>x</em>))</p>
+<p>where <em>T</em><sub><em>n</em></sub> is the <em>n</em>th Chebyshev polyomial. You can take this as a definition, or if you prefer another approach to defining the Chebyshev polynomials it&#8217;s a theorem.</p>
+<p>Then it&#8217;s easy to show that</p>
+<p style="padding-left: 40px;"><em>T</em><sub><em>m</em></sub>(<em>T</em><sub><em>n</em></sub>(<em>x</em>)) = <em>T</em><sub><em>mn</em></sub> (<em>x</em>).</p>
+<p>because</p>
+<p style="padding-left: 40px;">cos(<em>m</em> arccos(cos(<em>n</em> arccos(<em>x</em>)))) = cos(<em>mn</em> arccos(<em>x</em>)).</p>
+<p>Then the polynomials <em>T</em><sub><em>m</em></sub> and <em>T</em><sub><em>n</em></sub> must be permutable because</p>
+<p style="padding-left: 40px;"><em>T</em><sub><em>m</em></sub>(<em>T</em><sub><em>n</em></sub>(<em>x</em>)) = <em>T</em><sub><em>mn</em></sub> (<em>x</em>) = <em>T</em><sub><em>n</em></sub>(<em>T</em><sub><em>m</em></sub>(<em>x</em>))</p>
+<p>for all <em>x</em>.</p>
+<p>There&#8217;s one more family of polynomials that are permutable, and that&#8217;s the power polynomials <em>x</em><sup><em>k</em></sup>. They are trivially permutable because</p>
+<p style="padding-left: 40px;">(<em>x</em><sup><em>m</em></sup>)<sup><em>n</em></sup> = (<em>x</em><sup><em>n</em></sup>)<sup><em>m</em></sup>.</p>
+<p>It turns out that the Chebyshev polynomials and the power polynomials are essentially [1] the only permutable sequence of polynomials.</p>
+<h2>Related posts</h2>
+<ul>
+<li class="link"><a href="https://www.johndcook.com/blog/2020/01/28/mittag-leffler-polynomials/">Generalization of power polynomials</a></li>
+<li class="link"><a href="https://www.johndcook.com/blog/2020/03/15/product-of-chebyshev-polynomials/">Product of Chebyshev polynomials</a></li>
+<li class="link"><a href="https://www.johndcook.com/blog/2020/03/14/the-brothers-markov/">The Brothers Markov</a></li>
+</ul>
+<p>[1] Here&#8217;s what &#8220;essentially&#8221; means. A set of polynomials, at least one of each positive degree, that all permute with each other is called a <strong>chain</strong>. Two polynomials <em>p</em> and <em>q</em> are <strong>similar</strong> if there is an affine polynomial</p>
+<p style="padding-left: 40px;">λ(<em>x</em>)<em> = <em>ax</em> + <em>b</em></em></p>
+<p>such that</p>
+<p style="padding-left: 40px;"><em>p</em>(<em>x</em>) = λ<sup>-1</sup>( <em>q</em>( λ(<em>x</em>) ) ).</p>
+<p>Then any permutable chain is similar to either the power polynomials or the Chebyshev polynomials. For a proof, see <a href="https://amzn.to/2QhGYWu">Chebyshev Polynomials</a> by Theodore Rivlin.</p><p>The post <a href="https://www.johndcook.com/blog/2020/08/22/permutable-polynomials/" target="_blank">Permutable polynomials</a> first appeared on <a href="https://www.johndcook.com/blog/" target="_blank">John D. Cook</a>.</p><img src="http://feeds.feedburner.com/~r/TheEndeavour/~4/UMtQwYvLr1I" height="1" width="1" alt=""/>
+    
+    <hr class="between_posts"/>
+  </li>
+  
+  <li>
+    <div class="article_title">
       <h3 class="fullpost_title"><a href="http://feedproxy.google.com/~r/TheEndeavour/~3/zuQkSzQEXuw/">Including a little Hebrew in an English LaTeX document</a></h3>
     </div>
     <div class="article_meta"><p>
@@ -792,583 +835,6 @@ processing system.</p>
     </p></div>
     <img src="https://imgs.xkcd.com/comics/rabbit_introduction.png" title="Washington state is seeing great success with reintroducing the Columbia River Basin subpopulation. We cannot allow them to further widen the interstate bun gap." alt="Washington state is seeing great success with reintroducing the Columbia River Basin subpopulation. We cannot allow them to further widen the interstate bun gap." />
     
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://mjtsai.com/blog/2020/08/20/taking-ownership-of-rust/">Taking Ownership of Rust</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 8:00&thinsp;pm
-      • Michael Tsai
-      
-      
-    </p></div>
-    <p><a href="https://blog.rust-lang.org/2020/08/18/laying-the-foundation-for-rusts-future.html">Rust Core Team</a> (via <a href="https://news.ycombinator.com/item?id=24199424">Hacker News</a>):</p>
-<blockquote cite="https://blog.rust-lang.org/2020/08/18/laying-the-foundation-for-rusts-future.html"><p>Notwithstanding the deep personal impact, the Rust project as a whole is very resilient to such events. We have leaders and contributors from a diverse set of different backgrounds and employers, and that diversity is a critical strength. Further, it is a common misconception that all of the Mozilla employees who participated in Rust leadership did so as a part of their employment. In fact, many Mozilla employees in Rust leadership <a href="https://twitter.com/ManishEarth/status/1294023260770770944">contributed to Rust in their personal time</a>, not as a part of their job.</p>
-<p>[&#8230;]</p>
-<p>[The] Rust Core Team and Mozilla are happy to announce plans to create a Rust foundation. The Rust Core Team&rsquo;s goal is to have the first iteration of the foundation up and running by the end of the year.</p>
-<p>[&#8230;]</p>
-<p>While we have only begun the process of setting up the foundation, over the past two years the Infrastructure Team has been leading the charge to reduce the reliance on any single company sponsoring the project, as well as growing the number of companies that support Rust.</p></blockquote>
-
-<p>Previously:</p>
-<ul>
-<li><a href="https://mjtsai.com/blog/2020/08/17/mozilla-signs-fresh-google-search-deal/">Mozilla Signs Fresh Google Search Deal</a></li>
-<li><a href="https://mjtsai.com/blog/2020/08/11/mozilla-layoffs/">Mozilla Layoffs</a></li>
-</ul>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://mjtsai.com/blog/2020/08/20/what-changed-before-swiftui-1-0/">What Changed Before SwiftUI 1.0</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 8:00&thinsp;pm
-      • Michael Tsai
-      
-      
-    </p></div>
-    <p><a href="https://mackuba.eu/2020/08/17/swiftui-beta/">Kuba Suder</a>:</p>
-<blockquote cite="https://mackuba.eu/2020/08/17/swiftui-beta/">
-<p>However, I was surprised to see how many of those things I wrote down don&rsquo;t work anymore.[&#8230;]</p>
-<p>And the problem is that all those old APIs are still there in the WWDC videos from last year. But WWDC videos are usually a very good source of knowledge, people come back to them years later looking for information that can&rsquo;t be found in the docs, Apple even often references videos from previous years in new videos, because they naturally can&rsquo;t repeat all information every year.</p>
-<p>This was bothering me enough that I decided to spend some time collecting all the major changes in the APIs that were presented in June 2019, but were changed later in one place.</p>
-</blockquote>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://mjtsai.com/blog/2020/08/20/russell-kirsch-rip/">Russell Kirsch, RIP</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 8:00&thinsp;pm
-      • Michael Tsai
-      
-      
-    </p></div>
-    <p><a href="https://petapixel.com/2020/08/13/russell-kirsch-inventor-of-the-pixel-passed-away-this-week/">DL Cade</a> (<a href="https://news.ycombinator.com/item?id=24168880">Hacker News</a>):</p>
-<blockquote cite="https://petapixel.com/2020/08/13/russell-kirsch-inventor-of-the-pixel-passed-away-this-week/"><p>Computer scientist <a href="https://en.wikipedia.org/wiki/Russell_A._Kirsch">Russell A. Kirsch</a>, the inventor of the pixel and an undisputed pioneer of digital imaging, passed away on Tuesday in his Portland home from complications arising from a form of Alzheimer&rsquo;s disease. He was 91 years old.</p><p>[&#8230;]</p><p>As <a href="https://www.dpreview.com/news/2623782158/russell-kirsch-inventor-of-the-pixel-dies-in-his-portland-home-at-age-91"><em>DPReview</em> points out</a>, Kirsch never stopped improving on his most famous invention, even after retiring in 2001. In <a href="https://www.wired.com/2010/06/smoothing-square-pixels/">a 2010 interview with <em>WIRED</em></a>, he outlined his attempts to create a system that uses &ldquo;variable shaped pixels&rdquo; instead of the squares that have dominated digital imaging since he invented them.</p></blockquote>
-
-<p><a href="https://en.wikipedia.org/wiki/Russell_Kirsch">Wikipedia</a>:</p>
-<blockquote cite="https://en.wikipedia.org/wiki/Russell_Kirsch">
-<p>In 1951 Kirsch joined the National Bureau of Standards as part of the team that ran SEAC (Standards Eastern Automatic Computer). SEAC was the U.S.&rsquo;s first <a href="https://en.wikipedia.org/wiki/Stored-program_computer">stored-program computer</a> to become operational, having entered service in 1950.</p>
-</blockquote>
-
-<p><a href="https://impossiblehq.com/an-unexpected-ass-kicking/">Russell Kirsch</a> (via <a href="https://news.ycombinator.com/item?id=4342790">Hacker News</a>):</p>
-<blockquote cite="https://impossiblehq.com/an-unexpected-ass-kicking/"><p>I&rsquo;ve been against Macintosh company lately. They&rsquo;re trying to get everyone to use iPads and when people use iPads they end up just using technology to consume things instead of making things. With a computer you can make things. You can code, you can make things and create things that have never before existed and do things that have never been done before.</p></blockquote>
-
-<p>That&rsquo;s basically what <a href="https://mjtsai.com/blog/2017/09/28/alan-kay-on-the-iphone/">Alan Kay said</a>. There&rsquo;s just something about him calling Apple &ldquo;Macintosh company.&rdquo;</p>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://mjtsai.com/blog/2020/08/20/weather-apps-after-dark-sky/">Weather Apps, After Dark Sky</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 8:00&thinsp;pm
-      • Michael Tsai
-      
-      
-    </p></div>
-    <p><a href="https://twitter.com/jonasdowney/status/1290681253734363139">Jonas Downey</a>:</p>
-<blockquote cite="https://twitter.com/jonasdowney/status/1290681253734363139">
-<p>This is an existential threat to indie weather apps. We&rsquo;re now forced to:</p>
-<p>A) Find a new provider that&rsquo;s comparable and integrate it instead of Dark Sky.<br />
-B) Create a new set of widgets that are at least as good as Apple&rsquo;s (preferably better!)<br />
-C) Do all of this in about 3 months.</p>
-<p>We also have to learn all the new tech, update our existing app to work with iOS 14, and deal with the fact that this is all beta software that&rsquo;s clunky, poorly documented, and barely works in a bunch of ways.</p>
-<p>Oh, and Apple has special access to private APIs that we don&rsquo;t have.</p>
-</blockquote>
-
-<p>I was hoping Apple would integrate the Dark Sky features into the iOS 14 API. That would make it easier to develop (if not necessarily to sell) weather apps, as several of them have better interfaces than Apple&rsquo;s own. Instead, they&rsquo;ve improved the built-in app but made things worse for fans of alternate apps.</p>
-
-<p>Previously:</p>
-<ul>
-<li><a href="https://mjtsai.com/blog/2020/03/31/apple-buys-dark-sky/">Apple Buys Dark Sky</a></li>
-</ul>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/lunchtime-photo-655/">Lunchtime Photo</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 7:30&thinsp;pm
-      • Kevin Drum – Mother Jones
-      
-        • by Kevin Drum
-      
-      
-    </p></div>
-    <p>This is a yellow sweetclover. It&#8217;s invasive, but good for bees and quite drought tolerant. It can also be eaten by cows and suchlike, but apparently it tastes pretty bad. They&#8217;ll eat it, but only if nothing better is around.</p>
-<figure id="attachment_860420"  class="inline-image alignnone" style="max-width: 1300px;"><img loading="lazy" class="size-full wp-image-860420" src="https://www.motherjones.com/wp-content/uploads/2020/08/blog_lunchtime_yellow_sweetclover_laguna_coast.jpg" alt="" width="1300" height="776" srcset="https://www.motherjones.com/wp-content/uploads/2020/08/blog_lunchtime_yellow_sweetclover_laguna_coast.jpg 1828w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_lunchtime_yellow_sweetclover_laguna_coast.jpg?resize=321,192 321w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_lunchtime_yellow_sweetclover_laguna_coast.jpg?resize=593,354 593w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_lunchtime_yellow_sweetclover_laguna_coast.jpg?resize=1536,917 1536w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_lunchtime_yellow_sweetclover_laguna_coast.jpg?resize=50,30 50w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_lunchtime_yellow_sweetclover_laguna_coast.jpg?resize=1300,776 1300w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_lunchtime_yellow_sweetclover_laguna_coast.jpg?resize=990,591 990w, https://www.motherjones.com/wp-content/uploads/2020/08/blog_lunchtime_yellow_sweetclover_laguna_coast.jpg?resize=642,383 642w" sizes="(max-width: 709px) 85vw, (max-width: 909px) 67vw, (max-width: 1362px) 62vw, 840px" /><figcaption class="wp-caption-text"><span class="media-credit">April 20, 2019 — Laguna Coast Wilderness Park, Orange County, California<br />
-</span></figcaption></figure>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="linkpost_title"><a href="https://www.defendingdemocracytogether.org/national-security/">70 Top Republican National Security Officials Denounce Trump as Unfit, Announce Support for Biden</a> <span class="linkpost_arrow">→</span></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 7:16&thinsp;pm
-      • Daring Fireball
-      
-        • by John Gruber
-      
-      
-       • <span class="permalink"><a href="https://daringfireball.net/linked/2020/08/20/republican-national-security-officials-for-biden">∞</a></span>
-      
-    </p></div>
-    <p>A statement by 70 former Republican national security officials:</p>
-
-<blockquote>
-  <p>We are former national security officials who served during the
-administrations of Presidents Ronald Reagan, George H.W. Bush,
-George W. Bush, and/or Donald Trump, or as Republican Members of
-Congress. We are profoundly concerned about the course of our
-nation under the leadership of Donald Trump. Through his actions
-and his rhetoric, Trump has demonstrated that he lacks the
-character and competence to lead this nation and has engaged in
-corrupt behavior that renders him unfit to serve as President.</p>
-
-<p>For the following reasons, we have concluded that Donald Trump has
-failed our country and that Vice President Joe Biden should be
-elected the next President of the United States.</p>
-</blockquote>
-
-<p>You love to see it.</p>
-
-<div>
-
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="linkpost_title"><a href="https://www.cnn.com/2020/08/18/politics/senate-intelligence-report-russia-election-interference-efforts/index.html">Bipartisan Republican-Led Senate Intel Report Details Trump Campaign Contacts With Russia in 2016, Adding to Mueller Findings</a> <span class="linkpost_arrow">→</span></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 7:11&thinsp;pm
-      • Daring Fireball
-      
-        • by John Gruber
-      
-      
-       • <span class="permalink"><a href="https://daringfireball.net/linked/2020/08/20/senate-intel-report-trump-russia">∞</a></span>
-      
-    </p></div>
-    <p>CNN:</p>
-
-<blockquote>
-  <p>Among the key findings:</p>
-
-<ul>
-<li><p>That then-campaign chairman Paul Manafort was working with
-<a href="https://www.cnn.com/2019/01/15/politics/mueller-kilimnik-manafort/index.html">Konstantin Kilimnik</a>, a Russian intelligence officer, and
-sought to share internal campaign information with Kilimnik. The
-committee says it obtained “some information suggesting Kilimnik
-may have been connected” to Russia’s 2016 hacking operation and
-concludes Manafort’s role on the campaign “represented a grave
-counterintelligence threat.”</p></li>
-<li><p>That Trump and senior campaign officials sought to obtain
-advance information on WikiLeaks’ email dumps <a href="https://www.cnn.com/2019/02/15/politics/roger-stone-wikileaks/index.html">through Roger
-Stone</a>, and that Trump spoke to Stone about WikiLeaks,
-despite telling the special counsel in written answers <a href="https://www.cnn.com/2020/06/19/politics/mueller-report-rerelease-fewer-redactions/index.html">he had
-“no recollections” that they had spoken about it</a>.</p></li>
-<li><p>That information offered at <a href="https://www.cnn.com/2018/07/31/politics/trump-tower-meeting-timeline/index.html">the June 2016 Trump Tower
-meeting</a> “was part of a broader influence operation” from
-the Russian government, though there’s no evidence Trump
-campaign members knew of it. Two of the Russians who met with
-Donald Trump Jr., Jared Kushner and Manafort had “significant
-connections” to the Russian government, including Russian
-intelligence, and Russian lawyer Natalia Veselnitskaya’s ties
-were “far more extensive and concerning than what had been
-publicly known.”</p></li>
-</ul>
-</blockquote>
-
-<p>You really do hate to see it.</p>
-
-<div>
-
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="linkpost_title"><a href="https://www.nytimes.com/2020/08/20/nyregion/donald-trump-taxes-cyrus-vance.html">Trump Must Turn Over Tax Returns to D.A., Judge Rules</a> <span class="linkpost_arrow">→</span></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 7:06&thinsp;pm
-      • Daring Fireball
-      
-        • by John Gruber
-      
-      
-       • <span class="permalink"><a href="https://daringfireball.net/linked/2020/08/20/trump-taxes">∞</a></span>
-      
-    </p></div>
-    <p>Benjamin Weiser and William K. Rashbaum, reporting for The New York Times:</p>
-
-<blockquote>
-  <p>A federal judge on Thursday rejected President Trump’s latest
-effort to block the Manhattan district attorney from obtaining his
-tax returns, roundly dismissing Mr. Trump’s arguments that the
-prosecutor’s grand jury subpoena was “wildly overbroad” and issued
-in bad faith.</p>
-
-<p>The ruling by Judge Victor Marrero of Federal District Court in
-Manhattan marked another setback for the president in his yearlong
-fight to block the subpoena.</p>
-</blockquote>
-
-<p>You hate to see it.</p>
-
-<div>
-
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="linkpost_title"><a href="https://www.cnbc.com/2020/08/20/former-trump-advisor-steve-bannon-arrested-on-charges-of-defrauding-donors-in-fundraising-scheme.html">Former Trump Advisor Steve Bannon Arrested on Charges of Defrauding Donors in Fundraising Scheme</a> <span class="linkpost_arrow">→</span></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 7:04&thinsp;pm
-      • Daring Fireball
-      
-        • by John Gruber
-      
-      
-       • <span class="permalink"><a href="https://daringfireball.net/linked/2020/08/20/bannon">∞</a></span>
-      
-    </p></div>
-    <p>CNBC:</p>
-
-<blockquote>
-  <p>Former White House chief strategist Steve Bannon was arrested
-Thursday after being charged with defrauding hundreds of thousands
-of donors through his “We Build the Wall” fundraising campaign.</p>
-
-<p>Bannon and three associates were indicted in a federal
-investigation in the Southern District of New York. Prosecutors
-allege the four defrauded donors by raising “more than $25 million
-to build a wall along the southern border of the United States,”
-but some of that money was used for personal gain.</p>
-
-<p>The United States Postal Inspection Service assisted in the
-investigation.</p>
-</blockquote>
-
-<p>You hate to see it.</p>
-
-<div>
-
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://daringfireball.net/2020/08/on_tiktok_as_a_security_threat">★ On TikTok as a Security Threat</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 7:02&thinsp;pm
-      • Daring Fireball
-      
-        • by John Gruber
-      
-      
-    </p></div>
-    <p>David E. Sanger and Julian E. Barnes, <a href="https://www.nytimes.com/2020/08/07/us/politics/tiktok-security-threat.html">reporting for The New York Times last week</a>:</p>
-
-<blockquote>
-  <p>TikTok has long presented a parenting problem, as millions of
-Americans raising preteens and teenagers distracted by its viral
-videos can attest. But when the C.I.A. was asked recently to
-assess whether it was also a national security problem, the answer
-that came back was highly equivocal.</p>
-
-<p>Yes, the agency’s analysts told the White House, it is possible
-that the Chinese intelligence authorities could intercept data or
-use the app to bore into smartphones. But there is no evidence
-they have done so, despite the calls from President Trump and
-Secretary of State Mike Pompeo to neutralize a threat from the
-app’s presence on millions of American devices.</p>
-</blockquote>
-
-<p>The fact that TikTok is owned and controlled by a Chinese company is reason enough to be suspicious, and in my opinion <a href="https://daringfireball.net/linked/2020/08/18/tiktok-tim-wu">reason enough to ban the service</a>. But there is no evidence to date that TikTok is a security threat in the sense that their app might be doing anything secretly nefarious on our phones. We should be concerned just by what TikTok is doing on the surface, what we see and know TikTok does — its potential as a propaganda arm of the PRC.</p>
-
-<p>In terms of intercepting data it shouldn’t have access to, there’s no sign TikTok has ever done so and there’s no reason to think they <em>could</em> even if they wanted to. All iOS and Google Play Android apps are installed in sandboxes — no app, TikTok or otherwise, has access to data outside its sandbox. <em>Sandbox</em> is arguably a poorly-chosen word from a layperson’s perspective. It’s nothing like a real-world playground where kids can, if unsupervised, freely move from one sandbox to another (or throw sand outside their own sandbox). <a href="https://cocoacasts.com/what-is-application-sandboxing/">An application sandbox is like a virtual world unto itself</a>. They’re implemented technically, not through voluntary compliance. They are technical containers that limit what an app <em>can</em> see and do, not a list of guidelines of what an app <em>should</em> see and do. An app doing something outside its sandbox — without explicit permission from the platform via an entitlement — is exploiting a security vulnerability, not merely breaking the rules.</p>
-
-<p>Obviously it’s possible that TikTok could be exploiting vulnerabilities in iOS and/or Android to access data they shouldn’t be able to, but there’s never been any suggestion that they are. And if they were, it would be huge news, an enormous scandal both for TikTok <em>and</em> the platform vendor (Apple or Google). Why risk it? TikTok is already sitting on a veritable golden goose, collecting information about what sort of videos hundreds of millions of users around the world enjoy watching, and controlling the secret black-box algorithm that determines what new videos those hundreds of millions of people see each time they open TikTok and swipe up. Even if TikTok’s intentions are truly evil, they’d be fools to risk what they have by exploiting security bugs to, say, try to read emails or texts or whatever people are spooked they’re doing.</p>
-
-<p>Being spooked that TikTok is secretly stealing your emails is like being spooked that the ATMs in a casino are stealing your bank account PIN code. Why in the world would a casino run a crooked ATM when you’re using the ATM to take out money to lose to them in slot machines? It’s theoretically possible but makes little sense.</p>
-
-<p>But what about stories like <a href="https://www.cnn.com/2020/07/28/politics/biden-campaign-tiktok/index.html">the Biden campaign banning TikTok from staffers’ phones</a>? Or Amazon’s internal IT department sending out a company-wide blast <a href="https://www.techmeme.com/200710/p20#a200710p20">declaring that TikTok must be removed from any device that accesses company email</a>, only to issue a “never mind” retraction hours later? People see these stories and assume TikTok must be doing something nefarious. But I very much suspect that the stories themselves are driven by the general hysteria around TikTok being up to no good.</p>
-
-<p>Organizations like the Biden campaign and Amazon’s IT department are banning TikTok not because they know something is fishy about it but as a sort of “cover your ass just in case” thing. Given <a href="https://www.rollingstone.com/politics/politics-features/john-podesta-pizzagate-766489/">what happened to the Clinton campaign’s email</a> in 2016, you can’t blame the Biden campaign for being overly cautious, if not downright paranoid. I recommend paranoia for them. But I think the reason Amazon so quickly <em>reverted</em> its ban on TikTok was because the initial ban was based on nothing more than hearsay.</p>
-
-<p>Consider Apple and Google. Both companies have an inordinate amount of intellectual property to protect. Both companies are surely deeply concerned about the Chinese government, in particular, attempting to infiltrate their systems. Both companies also have <a href="https://www.cnbc.com/2019/06/11/amazon-beats-apple-and-google-to-become-the-worlds-most-valuable-brand.html">consumer brand reputations</a> to protect with the App Store and Play Store. If either company had any actual reason to suspect TikTok of malfeasance, they’d remove TikTok from their app stores. Surely, the security experts at both companies have examined TikTok with more attention than most apps get.</p>
-
-<p>And even if they couldn’t prove anything, they’d surely be among the very first companies to ban the TikTok app from employee devices if there were any reason to suspect they should. But they haven’t. Apple and Google employees are free to swipe swipe swipe in TikTok to their hearts’ content on the same devices they use for work communication.</p>
-
-<p>We should be concerned about TikTok only because of what we <em>know</em> they have access to: TikTok users’ attention and their interests. There’s no evidence that TikTok has access to anything else on our phones that they shouldn’t.</p>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="linkpost_title"><a href="https://www.apple.com/newsroom/2020/08/apple-announces-apple-music-radio/">The Beats Do Not Go On</a> <span class="linkpost_arrow">→</span></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 7:01&thinsp;pm
-      • Daring Fireball
-      
-        • by John Gruber
-      
-      
-       • <span class="permalink"><a href="https://daringfireball.net/linked/2020/08/20/beats-go-on">∞</a></span>
-      
-    </p></div>
-    <p>Apple Newsroom:</p>
-
-<blockquote>
-  <p>Beginning today, Beats 1, the flagship global radio station, will
-be renamed Apple Music 1, and two additional radio stations will
-launch: Apple Music Hits, celebrating everyone’s favorite songs
-from the ’80s, ’90s, and 2000s, and Apple Music Country,
-spotlighting country music.</p>
-</blockquote>
-
-<p>Unless I’m missing something, “Beats” is now gone from all of Apple Music. What remains of the Beats brand is only the headphone business, which I expect will fade away in the next few years as the AirPods brand expands.</p>
-
-<div>
-
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="linkpost_title"><a href="https://www.penny-arcade.com/comic/2020/08/19">HBO Whatnow</a> <span class="linkpost_arrow">→</span></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 5:27&thinsp;pm
-      • Daring Fireball
-      
-        • by John Gruber
-      
-      
-       • <span class="permalink"><a href="https://daringfireball.net/linked/2020/08/20/penny-arcade-hbo">∞</a></span>
-      
-    </p></div>
-    <p>Penny Arcade on HBO Max vs. HBO Go vs. HBO Now vs. Why the Hell Isn’t It Just Called “HBO” You  Dumbasses You Already Own the World’s Greatest Brand Representing Premium Subscription Video Content.</p>
-
-<div>
-
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="http://feedproxy.google.com/~r/TheEndeavour/~3/xAyixO3GHgE/">All English vowel sounds in one sentence</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 4:24&thinsp;pm
-      • John D. Cook
-      
-        • by John
-      
-      
-    </p></div>
-    <p>Contrary to popular belief, English has more than five or ten vowel sounds. The actual number is disputed because of disagreements over when two sounds are sufficiently distinct to be classified as separate sounds. I&#8217;ve heard some people say 15, some 17, some over 20.</p>
-<p>I ran across a <a href="https://lingthusiasm.com/post/159237203511/lingthusiasm-episode-6-all-the-sounds-in-all-the">podcast episode</a> recently that mentioned a sentence that demonstrates a different English vowel sound in each word:</p>
-<p style="padding-left: 40px;">Who would know naught of art must learn, act, and then take his ease [1].</p>
-<p>The hosts noted that to get all the vowels in, you need to read the sentence with non-rhotic pronunciation, i.e. suppressing the r in <em>art</em>.</p>
-<p>I&#8217;ll run this sentence through some software that returns the phonetic spelling of each word in IPA symbols to see the distinct vowel sounds that way. First I&#8217;ll use Python, then Mathematica.</p>
-<h2>Python</h2>
-<p>Let&#8217;s run this through some Python code that converts English words to <abbr title="International Phonetic Alphabet">IPA</abbr> notation so we can look at the vowels.</p>
-<pre>    import eng_to_ipa as ipa
-
-    text = "Who would know naught of art must learn, act, and then take his ease."
-    print(ipa.convert(text))
-</pre>
-<p>This gives us</p>
-<p style="padding-left: 40px;">hu wʊd noʊ nɔt əv ɑrt məst lərn, ækt, ənd ðɛn teɪk hɪz iz</p>
-<p>Which includes the following vowel symbols:</p>
-<ol>
-<li>u</li>
-<li>ʊ</li>
-<li>oʊ</li>
-<li>ɔ</li>
-<li>ə</li>
-<li>ɑ</li>
-<li>ə</li>
-<li>ə</li>
-<li>æ</li>
-<li>ə</li>
-<li>ɛ</li>
-<li>eɪ</li>
-<li>ɪ</li>
-<li>i</li>
-</ol>
-<p>This has some duplicates: 5, 7, 8, and 10 are all schwa symbols.</p>
-<p>By default the <code>eng_to_ipa</code> gives one way to write each word in IPA notation. There is an optional argument, <code>retrieve_all</code> that defaults to <code>False</code> but may return more alternatives when set to <code>True</code>. However, in our example the only difference is that the second alternative writes <em>and</em> as <code>ænd</code> rather than <code>ənd</code>.</p>
-<p>It looks like the <code>eng_to_ipa</code> module doesn&#8217;t transcribe vowels with sufficient resolution to distinguish some of the sounds in the model sequence. For example, it doesn&#8217;t seem to distinguish the stressed sound <code>ʌ</code> from the unstressed <code>ə</code>.</p>
-<h2>Mathematica</h2>
-<p>Here&#8217;s Mathematica code to split the model sentence into words and show the IPA pronunciation of each word.</p>
-<pre>    text = "who would know naught of art must \
-        learn, act, and then take his ease" 
-    ipa[w_] := WordData[w, "PhoneticForm"]
-    Map[ipa, TextWords[text]]
-</pre>
-<p>This returns</p>
-<pre>    {"hˈu", "wˈʊd", "nˈoʊ", "nˈɔt", "ˈʌv", "ˈɒrt", "mˈʌst", 
-    "lˈɝn", "ˈækt", "ˈænd", "ðˈɛn", "tˈeɪk", "hˈɪz", "ˈiz"}
-</pre>
-<p>By the way, I had to write the first word as &#8220;who&#8221; because <code>WordData</code> won&#8217;t do it for me. If you ask for</p>
-<pre>    ipa["Who"]</pre>
-<p>Mathematica will return</p>
-<pre>    Missing["NotAvailable"]</pre>
-<p>though it works as expected if you send it &#8220;who&#8221; rather than &#8220;Who.&#8221;</p>
-<p>Let&#8217;s remove the stress marks and join the words together so we can compare the Python and Mathematica output. The top line is from Python and the bottom is from Mathematica.</p>
-<pre>    hu wʊd noʊ nɔt əv ɑrt məst lərn ækt ænd ðɛn teɪk hɪz iz
-    hu wʊd noʊ nɔt ʌv ɒrt mʌst lɝn  ækt ænd ðɛn teɪk hɪz iz
-</pre>
-<p>There are a few differences, summarized in the table below. Since the symbols are a little difficult to tell apart, I&#8217;ve included their Unicode code points.</p>
-<pre>    |-------+------------+-------------|
-    | Word  | Python     | Mathematica |
-    |-------+------------+-------------|
-    | of    | ə (U+0259) | ʌ (U+028C)  |
-    | must  | ə (U+0259) | ʌ (U+028C)  |
-    | art   | ɑ (U+0251) | ɒ (U+0252)  |
-    | learn | ə (U+0259) | ɝ (U+025D)  |
-    |-------+------------+-------------|
-</pre>
-<p>Mathematica makes some distinctions that Python missed.</p>
-<p><strong>Update</strong>: See the first comment below for variations on how the model sentence can be pronounced and how to get more distinct vowel sounds out of it.</p>
-<h2>More linguistics posts</h2>
-<ul>
-<li class="link"><a href="https://www.johndcook.com/blog/2019/08/27/heaps-law/">Estimating vocabulary size with Heaps law</a></li>
-<li class="link"><a href="https://www.johndcook.com/blog/2014/02/24/creating-a-writing-system/">Writing down an unwritten language</a></li>
-<li class="link"><a href="https://www.johndcook.com/blog/2019/10/18/chinese-character-entropy/">Chinese character frequency and entropy</a></li>
-</ul>
-<p>[1] After writing this post I saw the sentence in writing, and the fourth word is &#8220;aught&#8221; rather than &#8220;naught.&#8221; This doesn&#8217;t change the vowel since the two words rhyme, but Mathematica doesn&#8217;t recognize the word &#8220;aught.&#8221;</p><p>The post <a href="https://www.johndcook.com/blog/2020/08/20/english-vowel-sounds/" target="_blank">All English vowel sounds in one sentence</a> first appeared on <a href="https://www.johndcook.com/blog/" target="_blank">John D. Cook</a>.</p><img src="http://feeds.feedburner.com/~r/TheEndeavour/~4/xAyixO3GHgE" height="1" width="1" alt=""/>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://kk.org/cooltools/simple-trick-for-determining-2-1mm-or-2-5mm-barrel-jacks/">Simple Trick for Determining 2.1mm or 2.5mm Barrel Jacks</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 4:00&thinsp;pm
-      • Cool Tools
-      
-        • by claudia
-      
-      
-    </p></div>
-    <p><img src="https://kk.org/cooltools" /></p><p><strong>Simple Trick for Determining 2.1mm or 2.5mm Barrel Jacks</strong></p>
-<div id="attachment_36850" style="width: 610px" class="wp-caption alignnone"><img class="size-full wp-image-36850" src="https://kk.org/cooltools/files/2020/08/barreljacks.png" alt="If it fits, you must equip." width="600" height="210" /><p class="wp-caption-text">If it fits, you must equip.</p></div>
-<p>Here’s a tip I learned from Donald Bell’s <a href="https://www.youtube.com/channel/UCfMJZK2etTZFGXYDh8p3x3w?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">Maker Update</a>. It’s from an old DigiKey <a href="https://youtu.be/iHyA4M0A8V4?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">“Teaching Moment</a>.” Many barrel jacks have a consistent 5.5mm outside diameter. But the inside diameter can vary, usually either between 2.1mm or 2.5mm. If you don’t have your digital calipers handy, you can determine this inside diameter with common objects: a toothpick, a ball point pen, or a test probe. The brass housing on a ball point pen is usually 2.2mm. If it doesn’t fit inside the barrel of your jack, then the jack is 2.1mm. If the pen easily fits inside, the jack is 2.5mm. A standard toothpick is 2.1mm. If it fits snugly in the jack, it’s a 2.1mm jack. Also, a common multimeter probe needle with fit closely inside of a 2.1mm jack and be very sloppy inside of a 2.5mm jack.</p>
-<p><strong>Yet Another Method for Removing a Stripped Screw</strong></p>
-<div id="attachment_36849" style="width: 610px" class="wp-caption alignnone"><img class="size-full wp-image-36849" src="https://kk.org/cooltools/files/2020/08/stripscrew.png" alt="Wrap that rascal." width="600" height="494" /><p class="wp-caption-text">Wrap that rascal.</p></div>
-<p>There are at least a dozen ways of removing stripped screws. Many of them involve getting rubber material (say, from a rubber band) between the screw and the bit. From the <em>Instagram</em> page for <a href="https://www.instagram.com/p/B2zWrkMHK7b/?fbclid=IwAR3OJ5nRUG3GuY5OaS3MejjEcEyrIgwLJJuIp0o7KVqZ0YStRrJWbqFM31U&amp;igshid=u72jdj8qyf7c&amp;utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">Tradecktory</a> comes this idea on using a disposable rubber glove wrapped around the bit to do the trick.</p>
-<p><strong>Creating a Level from a Carpenter&#8217;s Square</strong></p>
-<div id="attachment_36848" style="width: 610px" class="wp-caption alignnone"><img class="size-full wp-image-36848" src="https://kk.org/cooltools/files/2020/08/carpentersquare.jpeg" alt="Getting on the level in a pinch." width="600" height="600" /><p class="wp-caption-text">Getting on the level in a pinch.</p></div>
-<p>Here’s an oldie but goodie from the <a href="https://www.instagram.com/acmetools/?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">Acme Tools</a> <em>Instagram</em> feed: If you don’t have a level handy, wrap a chalk line over the top of a carpenter’s square at the 90 degree angle. When the string lines up with the 45 degree mark on the square, your surface is level. I recently bought the classic <a href="https://geni.us/eWtEm3B?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">Swanson Tools Speed Square</a> and couldn’t love it any more. A great tool for under ten bones. It even comes with the iconic (and very handy) <a href="https://www.google.com/url?cd=&amp;esrc=s&amp;q=&amp;rct=j&amp;sa=t&amp;source=web&amp;url=https%3A%2F%2Firp-cdn.multiscreensite.com%2F57e36f82%2Ffiles%2Fuploaded%2FSpeedSquareInstructionBook2.pdf&amp;usg=AOvVaw1HuEh4CZiQnQ6ENsNjSUTs&amp;utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter&amp;ved=2ahUKEwjDlcy86ZjrAhXqx1kKHUrrBkoQFjAAegQIAhAB" target="_blank">Speed Square Blue Book</a> [PDF].</p>
-<p><strong>Using a Shop Weight as a Temporary Stop Block</strong></p>
-<div id="attachment_36847" style="width: 610px" class="wp-caption alignnone"><img class="size-full wp-image-36847" src="https://kk.org/cooltools/files/2020/08/shopweight.png" alt="Weights and measures." width="600" height="339" /><p class="wp-caption-text">Weights and measures.</p></div>
-<p>In this <a href="https://youtu.be/pfHtIs9uZZA?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">recent Laura Kampf video</a>, where she builds a sweet little geodesic dome greenhouse out of trash, she employs a tip every maker should store in their mental toolbox. She uses a shop weight as a quick stop block for repetitive cutting of material to the same length. What she is cutting is ingenious, too. She used metal strapping bands as the struts for her wee dome.</p>
-<p><strong>Making a Quick Plastic/Laminate Cutter</strong></p>
-<div id="attachment_36846" style="width: 610px" class="wp-caption alignnone"><img class="size-full wp-image-36846" src="https://kk.org/cooltools/files/2020/08/laminatecutter.png" alt="Making the knife you need." width="600" height="610" /><p class="wp-caption-text">Making the knife you need.</p></div>
-<p>In a recent <a href="https://www.instagram.com/jimmydiresta/?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">Jimmy DiResta Instagram</a> story, he shared a useful tip. He was cutting a bunch of Formica and didn’t have a <a href="https://geni.us/YG9IBa?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">plastic/laminate cutter </a>handy. So, he simply cut a hook in a utility knife to achieve the same basic effect.</p>
-<p><strong>Using the Pomodoro Technique to Fight Distraction</strong><br />
-My long-time pal (and <em>Cool Tools</em> and <em>Boing Boing</em> colleague) Mark Frauenfelder has just launched a new newsletter, called <a href="https://themagnet.substack.com/p/the-magnet-0001?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">The Magnet</a>. There is a free version and a paid subscription version. <a href="https://boingboing.net/2020/08/11/why-im-launching-the-magnet.html?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">More info here</a>.</p>
-<p>In his <a href="https://themagnet.substack.com/p/the-magnet-0001?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">first issue</a>, he talks about the Pomodoro productivity technique. This is a method for trying to focus on the work at hand in our extraordinarily distracted modern world. The basic idea is to set a timer for a set interval of time (say, 25 minutes), come up for air for a set interval (say 10 minutes), set the timer again, rinse, repeat. When under the timer, you do <em>nothing</em> but the work at hand. No checking your phone, email, FaceFart, etc.</p>
-<p>I had no idea it had a name, but I’ve used the timer technique for years. Sometimes, it’s the only way I can get anything productive done. I set my timer for 56 minute sessions (don’t ask).</p>
-<p>If you have similar distraction issues, consider giving this method a try.</p>
-<p>Sketchplanations has a good, short guide to the <a href="https://www.sketchplanations.com/post/179972023741/the-pomodoro-technique-a-super-simple-method?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">Pomodoro Technique</a>..</p>
-<p><strong>Shop Talk</strong></p>
-<div id="attachment_36845" style="width: 610px" class="wp-caption alignnone"><img class="size-full wp-image-36845" src="https://kk.org/cooltools/files/2020/08/stanleybuttguage.jpeg" alt="The Stanley Butt Gauge No. 93" width="600" height="450" /><p class="wp-caption-text">The Stanley Butt Gauge No. 93</p></div>
-<p>Reader <strong>Chris Johnson</strong> sent this response to <a href="https://www.getrevue.co/profile/garethbranwyn/issues/gareth-s-tips-tools-and-shop-tales-issue-57-267691?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">last week’s piece</a> on cool specialty tools and the antique Stanley ruler with calipers: “I’m a fan of old tools, too, having inherited a bunch from various relatives past. Here’s one from my Uncle Soren, a Norwegian carpenter who worked in Brooklyn in the 20s through 60s. It’s the Stanley Butt Gauge No. 93 (used for installing doors). I’ve hung doors, but have never thought to use it. It generally sits on my desk as a reminder to occasionally get my hands off the keyboard and onto a physical project of some sort.”</p>
-<p>***</p>
-<p>In response to last issue’s piece on using wine bottles to irrigate plants when you’re away, I got a bunch of responses. Here’s one:</p>
-<p><strong>John Seiffer</strong>: “My wife tried the wine bottle plant watering and said the dirt just clogs it up. She’s a big fan of using wine bottles stuck <a href="https://geni.us/b8SG?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">in these</a>. Apparently the terra cotta works the magic.”</p>
-<p>There are also <a href="https://geni.us/jO55wO8?utm_campaign=Gareth%27s%20Tips%2C%20Tools%2C%20and%20Shop%20Tales&amp;utm_medium=email&amp;utm_source=Revue%20newsletter" target="_blank">plastic ones</a> that have valves with an adjustable drip rate.</p>
-<div class='ctx-subscribe-container ctx-personalization-container ctx_default_placement ctx-clearfix'></div><div class='ctx-social-container ctx_default_placement ctx-clearfix'></div><div class='ctx-module-container ctx_default_placement ctx-clearfix'></div><span class="ctx-article-root"><!-- --></span><p>[Gareth’s Tips, Tools, and Shop Tales is published by Cool Tools Lab. To receive the newsletter a week early, sign up <a href="https://www.getrevue.co/profile/garethbranwyn">here.</a>]</p>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://www.motherjones.com/kevin-drum/2020/08/health-update-53/">Health Update</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 3:44&thinsp;pm
-      • Kevin Drum – Mother Jones
-      
-        • by Kevin Drum
-      
-      
-    </p></div>
-    <p>Nothing new to report for August. My M-protein level has been rock steady for the past few months, which means the multiple myeloma is under control for now.</p>
-<figure id="attachment_860514"  class="inline-image alignnone" style="max-width: 1164px;"><img loading="lazy" class="size-full wp-image-860514" src="https://www.motherjones.com/wp-content/uploads/2020/08/blog_m_protein_august_2020-1.gif" alt="" width="1164" height="670"></figure>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://www.macsparky.com/blog/2020/8/maker-manager-consumer">Maker, Manager, Consumer</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 2:00&thinsp;pm
-      • MacSparky
-      
-        • by David Sparks
-      
-      
-    </p></div>
-    <p class="">I’ve been thinking lately about my journaling workflows. I’m increasingly using digital tools for daily journaling and questioning a lot of assumptions. One of those is about the purpose of journaling my day. Am I doing it to figure out what I was doing at 2:00 p.m. on a given day, or something else? The more I think about it, for me, the answer is something else.</p><p class="">Now I’m looking at my days not in terms of what I was doing at a specific time, but instead what I was doing&nbsp;<em>with my time</em>. I’m usually wearing one of three hats: maker, manager, or consumer.</p><p class=""><strong>The Maker</strong></p><p class="">Whenever I’m adding something, I’m making. I interpret this broadly. Making Field Guides, writing blog posts, doing client work, and making music are examples of things I make. While a lot of the things I make are shared with the world, others aren’t. Whether it’s for others or for me, I’m still making.</p><p class=""><strong>The Manager</strong></p><p class="">For Maker Sparky to produce, Manager Sparky needs to wrangle everything else. This is both an essential support role and an easy trap to fall into.</p><p class=""><strong>The Consumer</strong></p><p class="">When I’m not making or managing, I’m consuming. This ranges from watching <em>Star Wars</em> to reading scholarly articles. It’s all-consuming. This isn’t bad. It’s one of the best ways I come up with ideas for Maker Sparky.</p><p class="">My purpose in journaling is tracking how I’m spending my time in these roles. I don’t view any of them as inherently good or bad. The magic is in the balance. While making is most important to me, both managing and consuming enable making. I want to spend more time making than consuming. I need to spend time managing, but not go down the management/productivity rabbit hole so far that I don’t make anything.</p><p class="">So with this in mind, I’ve been focusing my journaling lately not so much on what I had for lunch, but what I make, manage, and consume. Using tags, I can then see it on a daily, weekly, and even monthly basis. If I look at my week and realize I spent most of my time sharpening pencils and sorting tasks (manager) and not enough time producing content (maker), I know I need to make changes. You can get similar information by tracking your time, but I think there is something more concrete looking at a list of things you’ve made, managed, and consumed over a period of time.</p><p class="">Implementing this isn’t difficult. You could create a text file and start making a list. You can do the same thing with a pad of paper and a pencil, or, if you’re using a digital journal like Day One, add tags for #maker, #manager, and #consumer. The real benefit of this comes in planning and review. If you’re going to track yourself as a maker, manager, and consumer, you should have some expectations and a feedback mechanism for living up to them.</p>
-    
-    <hr class="between_posts"/>
-  </li>
-  
-  <li>
-    <div class="article_title">
-      <h3 class="fullpost_title"><a href="https://www.macsparky.com/blog/2020/8/setapp-now-includes-ios-apps">Setapp Now Includes iOS Apps</a></h3>
-    </div>
-    <div class="article_meta"><p>
-      Posted on 20 August 2020 at 12:05&thinsp;am
-      • MacSparky
-      
-        • by David Sparks
-      
-      
-    </p></div>
-    <p class=""><a href="https://setapp.com/"><span>Setapp, the app subscription service for Mac Apps</span></a>, is no longer just for Mac Apps. Last week Setapp announced that it has added seven iOS apps to the service including Ulysses, Paste, Gemini Photos, Taskheal, SQLPro Studio, Mind Node, and PDF Search with more to come in the future. </p><p class="">I have several developer friends with Apps in Setapp and I never hear the usual grumbling from them about not getting enough revenue share from the service. Indeed, it is quite the opposite. So it’s good knowing they are taking care fo the developers and as a user, I dig the service because they just keep finding more apps that I like and would never have found otherwise.&nbsp;</p><p class=""> </p>
-    
     
   </li>
   
@@ -1378,7 +844,7 @@ My long-time pal (and <em>Cool Tools</em> and <em>Boing Boing</em> colleague
         By <a href="http://leancrew.com/all-this/2015/11/simpler-syndication/">Dr Drang</a>.
     </p>
     <p>
-        Last updated on 23 August 2020 at 12:33&thinsp;am.
+        Last updated on 23 August 2020 at 6:13&thinsp;am.
         Made with Python app & Jinja (based on script by configuration of the repository)
     </p>
   </footer>
